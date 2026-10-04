@@ -16,10 +16,10 @@ src/
 │   ├── weighting.ts        # IEC 61672-1:2013 A/C/Z acoustic curves, RMS, FFT, Leq & ballistics
 │   └── __tests__/          # Unit tests verifying mathematical formulas and ISO/IEC standards
 ├── components/
+│   ├── ui/                 # Shadcn-style zero-dependency UI primitives (Button, Card, Badge, Alert, Tabs)
 │   ├── Header.tsx          # App navbar, privacy badge, and guide modal trigger
-│   ├── PresetSelector.tsx  # Mode switcher (Nursery, Hearing, Sleep, Raw)
-│   ├── ContextBanner.tsx   # Dynamic real-time guidance (AAP 50 dBA crib rule, zone bar & placement)
-│   ├── RadialGauge.tsx     # Bespoke High-DPI Canvas arc meter, status glow, and digital readout
+│   ├── PresetSelector.tsx  # Mode switcher Tabs (Nursery, Hearing, Sleep, Raw)
+│   ├── MeterDisplay.tsx    # Hero digital decibel readout, linear AAP zone bar & dynamic verdict Alert
 │   ├── StatsCards.tsx      # Current, Min, Leq Average, and Peak Max session metrics
 │   ├── ControlBar.tsx      # Start/Pause/Resume/Reset, dBA/dBC/dBZ, Fast/Slow toggles
 │   ├── CalibrationDrawer.tsx # ±30 dB microphone calibration slider
