@@ -39,12 +39,11 @@ I believe basic utility tools belong on the open web. Progressive Web Apps (PWAs
 * 📊 **Pro / Unconstrained Meter**:
   * **IEC 61672-1 Frequency Weightings**: **dBA** (human ear simulation), **dBC** (flat bass/industrial), **dBZ** (unweighted linear SPL).
   * **Ballistics Time Weightings**: **Slow (1000ms)** for steady ambient sleep noise; **Fast (125ms)** for transient spikes.
-* 📈 **Dual Real-Time Acoustic Visualizers**:
-  * **60-Second Scrolling History Graph** with preset threshold guidelines.
-  * **64-Band Real-Time Frequency Spectrum** (20 Hz – 20 kHz) with dominant peak frequency detection.
-* 🌸 **Built-in Smart Sound Masker**:
-  * 100% client-side synthesized Pink Noise, Brown Noise, White Noise, and Gentle Rain.
-  * Zero downloads, works completely offline.
+* 🧭 **Bespoke Hero Visual Meter**:
+  * High-DPI Canvas arc meter with dynamic status glow and real-time qualitative verdict.
+  * Dedicated **Acoustic Safety Zone Bar** showing exact positioning relative to the AAP 50 dBA crib guideline.
+* 📈 **60-Second Scrolling History Graph**:
+  * Real-time rolling timeline with target threshold lines (AAP 50 dBA crib limit, NIOSH 85 dBA hazard limit).
 * 📱 **First-Class PWA (Progressive Web App)**:
   * Installable directly to your home screen on iOS and Android.
   * Launches in fullscreen with no browser address bar.

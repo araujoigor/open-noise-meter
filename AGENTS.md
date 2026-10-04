@@ -14,20 +14,17 @@ OpenNoiseMeter is a client-side Progressive Web App (PWA) built with **React**, 
 src/
 ├── audio/
 │   ├── weighting.ts        # IEC 61672-1:2013 A/C/Z acoustic curves, RMS, FFT, Leq & ballistics
-│   ├── noiseGenerator.ts   # Web Audio sound masker (Pink, Brown, White, Rain noise synthesis)
 │   └── __tests__/          # Unit tests verifying mathematical formulas and ISO/IEC standards
 ├── components/
-│   ├── Header.tsx          # App navbar, privacy badge, guide & masker modal triggers
+│   ├── Header.tsx          # App navbar, privacy badge, and guide modal trigger
 │   ├── PresetSelector.tsx  # Mode switcher (Nursery, Hearing, Sleep, Raw)
-│   ├── ContextBanner.tsx   # Dynamic real-time guidance (AAP 50 dBA crib rule, placement tips)
-│   ├── RadialGauge.tsx     # High-DPI Canvas arc meter, needle physics, and digital readout
+│   ├── ContextBanner.tsx   # Dynamic real-time guidance (AAP 50 dBA crib rule, zone bar & placement)
+│   ├── RadialGauge.tsx     # Bespoke High-DPI Canvas arc meter, status glow, and digital readout
 │   ├── StatsCards.tsx      # Current, Min, Leq Average, and Peak Max session metrics
 │   ├── ControlBar.tsx      # Start/Pause/Resume/Reset, dBA/dBC/dBZ, Fast/Slow toggles
 │   ├── CalibrationDrawer.tsx # ±30 dB microphone calibration slider
 │   ├── HistoryChart.tsx    # 60-second scrolling canvas timeline with threshold markers
-│   ├── SpectrumVisualizer.tsx # 64-band frequency spectrum (20 Hz - 20 kHz)
 │   ├── MethodologyModal.tsx # AAP baby sleep research, dBA explanation, and privacy promise
-│   ├── SoundMaskerModal.tsx # Ad-free white/pink/brown noise generator modal
 │   ├── EducationalSection.tsx # SEO FAQs and the motivation manifesto
 │   └── Footer.tsx          # Open-source MIT attribution and link to araujoigor.com
 ├── constants/

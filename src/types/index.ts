@@ -21,6 +21,7 @@ export interface MeterStats {
 export interface PresetThreshold {
   maxDb: number;
   label: string;
+  verdict?: string;
   level: RiskLevel;
   badge: string;
   advice: string;
@@ -44,5 +45,3 @@ export interface PresetConfig {
     recommendedPlacement?: string;
   };
 }
-
-export type NoiseType = 'pink' | 'brown' | 'white' | 'rain';

@@ -53,7 +53,6 @@ export function useNoiseMeter() {
   });
 
   const [history, setHistory] = useState<number[]>([]);
-  const [spectrumBands, setSpectrumBands] = useState<number[]>(new Array(64).fill(0));
 
   // Audio nodes and animation refs
   const audioCtxRef = useRef<AudioContext | null>(null);
@@ -72,18 +71,18 @@ export function useNoiseMeter() {
   const lastHistoryPushRef = useRef<number>(0);
   const startTimeRef = useRef<number | null>(null);
 
-  // Sync ref with state
   const weightingRef = useRef(weighting);
-  weightingRef.current = weighting;
-
   const responseTimeRef = useRef(responseTime);
-  responseTimeRef.current = responseTime;
-
   const calibrationOffsetRef = useRef(calibrationOffset);
-  calibrationOffsetRef.current = calibrationOffset;
-
   const statusRef = useRef(status);
-  statusRef.current = status;
+  const processFrameRef = useRef<() => void>(() => {});
+
+  useEffect(() => {
+    weightingRef.current = weighting;
+    responseTimeRef.current = responseTime;
+    calibrationOffsetRef.current = calibrationOffset;
+    statusRef.current = status;
+  }, [weighting, responseTime, calibrationOffset, status]);
 
   // Preset switch helper
   const setPreset = useCallback((newPreset: PresetType) => {
@@ -221,25 +220,6 @@ export function useNoiseMeter() {
       });
     }
 
-    // Compress FFT bins to 64 normalized visualizer bands (0.0 to 1.0)
-    const bandsCount = 64;
-    const step = Math.floor(bufferLength / bandsCount);
-    const newBands = new Array(bandsCount);
-    for (let b = 0; b < bandsCount; b++) {
-      let maxVal = -100;
-      const startIdx = b * step;
-      const endIdx = startIdx + step;
-      for (let j = startIdx; j < endIdx; j++) {
-        if (frequencyData[j] > maxVal) {
-          maxVal = frequencyData[j];
-        }
-      }
-      // Normalize from [-100 dB, -20 dB] to [0.0, 1.0]
-      const normalized = Math.max(0, Math.min(1, (maxVal + 100) / 80));
-      newBands[b] = normalized;
-    }
-    setSpectrumBands(newBands);
-
     // Update session stats
     setStats({
       current: smoothedSpl,
@@ -251,8 +231,12 @@ export function useNoiseMeter() {
       peakFrequencyHz,
     });
 
-    animFrameRef.current = requestAnimationFrame(processFrame);
+    animFrameRef.current = requestAnimationFrame(() => processFrameRef.current());
   }, []);
+
+  useEffect(() => {
+    processFrameRef.current = processFrame;
+  }, [processFrame]);
 
   const resumeMeter = useCallback(() => {
     if (statusRef.current === 'paused') {
@@ -261,9 +245,9 @@ export function useNoiseMeter() {
       }
       setStatus('running');
       lastTimeRef.current = performance.now();
-      animFrameRef.current = requestAnimationFrame(processFrame);
+      animFrameRef.current = requestAnimationFrame(() => processFrameRef.current());
     }
-  }, [processFrame]);
+  }, []);
 
   const startMeter = useCallback(async () => {
     setErrorMessage(null);
@@ -322,7 +306,7 @@ export function useNoiseMeter() {
       smoothedSplRef.current = 30;
 
       setStatus('running');
-      animFrameRef.current = requestAnimationFrame(processFrame);
+      animFrameRef.current = requestAnimationFrame(() => processFrameRef.current());
     } catch (err: unknown) {
       stopMeter();
       const message =
@@ -334,7 +318,7 @@ export function useNoiseMeter() {
       setErrorMessage(message);
       setStatus('error');
     }
-  }, [processFrame, stopMeter]);
+  }, [stopMeter]);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -348,7 +332,6 @@ export function useNoiseMeter() {
     errorMessage,
     stats,
     history,
-    spectrumBands,
     preset,
     weighting,
     responseTime,

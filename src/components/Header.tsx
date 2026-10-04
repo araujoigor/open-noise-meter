@@ -1,63 +1,40 @@
 import React from 'react';
-import { Volume2, BookOpen, Sparkles } from 'lucide-react';
+import { Volume2, BookOpen, ShieldCheck } from 'lucide-react';
 
 interface HeaderProps {
   onOpenMethodology: () => void;
-  onOpenMasker: () => void;
-  isMaskerPlaying: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  onOpenMethodology,
-  onOpenMasker,
-  isMaskerPlaying,
-}) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenMethodology }) => {
   return (
-    <header className="sticky top-0 z-30 w-full border-b border-zinc-800 bg-zinc-950/85 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
+    <header className="sticky top-0 z-30 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
+      <div className="mx-auto flex h-14 max-w-4xl items-center justify-between px-4 sm:px-6">
         {/* Brand */}
         <div className="flex items-center gap-2.5">
-          <div className="flex size-8 items-center justify-center rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shadow-sm">
+          <div className="flex size-8 items-center justify-center rounded-xl bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 shadow-sm shadow-emerald-500/10">
             <Volume2 className="size-4" />
           </div>
           <div className="flex items-baseline gap-2">
             <span className="text-base font-bold tracking-tight text-zinc-100">
               OpenNoiseMeter
             </span>
-            <span className="hidden sm:inline-flex rounded-full bg-zinc-800/80 px-2 py-0.5 text-[10px] font-mono font-medium text-zinc-400 border border-zinc-700/60">
-              Open Source • No Ads
+            <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-950/40 px-2 py-0.5 text-[10px] font-medium text-emerald-400 border border-emerald-500/30">
+              <ShieldCheck className="size-2.5" />
+              100% Client-Side • No Ads
             </span>
           </div>
         </div>
 
         {/* Header Action Buttons */}
         <div className="flex items-center gap-2">
-          {/* Sound Masker Quick Button */}
-          <button
-            type="button"
-            onClick={onOpenMasker}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-all ${
-              isMaskerPlaying
-                ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-400 shadow-sm'
-                : 'border-zinc-800 bg-zinc-900/80 text-zinc-300 hover:border-zinc-700 hover:text-white'
-            }`}
-            title="Ad-Free White & Pink Noise Generator"
-          >
-            <Sparkles className="size-3.5" />
-            <span className="hidden sm:inline">
-              {isMaskerPlaying ? 'Sound Masker (Playing)' : 'Sound Masker'}
-            </span>
-            <span className="sm:hidden">Masker</span>
-          </button>
-
           {/* Methodology / Science Guide */}
           <button
             type="button"
             onClick={onOpenMethodology}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-800 bg-zinc-900/80 px-2.5 py-1.5 text-xs font-medium text-zinc-300 hover:border-zinc-700 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-800 bg-zinc-900/90 px-3 py-1.5 text-xs font-medium text-zinc-300 hover:border-zinc-700 hover:text-white transition-all shadow-sm"
             title="Acoustic Science & AAP Baby Sleep Guidelines"
           >
-            <BookOpen className="size-3.5" />
+            <BookOpen className="size-3.5 text-emerald-400" />
             <span className="hidden sm:inline">Science & Guide</span>
             <span className="sm:hidden">Guide</span>
           </button>
@@ -67,10 +44,10 @@ export const Header: React.FC<HeaderProps> = ({
             href="https://github.com/araujoigor/noise-meter"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-800 bg-zinc-900/80 p-1.5 sm:px-2.5 sm:py-1.5 text-xs font-medium text-zinc-300 hover:border-zinc-700 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-800 bg-zinc-900/90 p-2 sm:px-3 sm:py-1.5 text-xs font-medium text-zinc-300 hover:border-zinc-700 hover:text-white transition-all shadow-sm"
             title="View Open Source Code on GitHub"
           >
-            <svg className="size-4" viewBox="0 0 24 24" fill="currentColor">
+            <svg className="size-3.5" viewBox="0 0 24 24" fill="currentColor">
               <path
                 fillRule="evenodd"
                 clipRule="evenodd"
@@ -84,3 +61,4 @@ export const Header: React.FC<HeaderProps> = ({
     </header>
   );
 };
+

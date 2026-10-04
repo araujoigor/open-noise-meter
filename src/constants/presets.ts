@@ -14,33 +14,37 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 45,
         label: 'Whisper Quiet',
+        verdict: 'Peaceful & Safe for Infant Sleep',
         level: 'safe',
         badge: 'Safe for Sleep',
-        advice: 'Peaceful nursery ambient level. Excellent for uninterrupted infant sleep.',
+        advice: 'Peaceful nursery ambient level. Excellent and safe for uninterrupted infant sleep.',
         color: '#10b981', // emerald-500
       },
       {
         maxDb: 50,
         label: 'Optimal White Noise',
+        verdict: 'Optimal White Noise • AAP Crib Limit Target',
         level: 'safe',
-        badge: 'AAP Compliant (<50 dBA)',
-        advice: 'Meets American Academy of Pediatrics (AAP) recommendations for crib-distance sound.',
+        badge: 'AAP Target (<50 dBA)',
+        advice: 'Ideal white noise level. Meets American Academy of Pediatrics (AAP) recommendations for infant sleep.',
         color: '#10b981', // emerald-500
       },
       {
         maxDb: 60,
         label: 'Borderline Loud',
+        verdict: 'Caution: Borderline for Continuous Sleep',
         level: 'caution',
-        badge: 'Caution: Reduce Volume',
-        advice: 'Acceptable for short soothing, but too loud for all-night sleep. Lower volume or move machine further away.',
+        badge: 'Caution: Borderline',
+        advice: 'Acceptable for short soothing, but too loud for all-night sleep. Lower volume or move machine 7+ ft away.',
         color: '#f59e0b', // amber-500
       },
       {
         maxDb: 130,
         label: 'Hearing Hazard for Baby',
+        verdict: "Too Loud for Baby's Ears!",
         level: 'danger',
-        badge: 'Too Loud! Turn Down',
-        advice: 'Exceeds hospital nursery safety limits (>60 dBA). Can impact infant auditory cortex development. Move speaker 7+ ft away immediately.',
+        badge: 'Too Loud for Baby!',
+        advice: 'Exceeds pediatric safety limits (>60 dBA). Can impact infant auditory cortex development. Move machine 7+ ft away or lower volume immediately.',
         color: '#ef4444', // red-500
       },
     ],
@@ -48,15 +52,15 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       ruleTitle: 'The 50 dBA / 7-Foot Rule for White Noise Machines',
       ruleText: 'The American Academy of Pediatrics (AAP) recommends that white noise machines be placed at least 7 feet (2 meters) away from an infant’s crib, and set so that sound levels at the baby’s ears do not exceed 50 dBA.',
       standardCitation: 'American Academy of Pediatrics (AAP) Study on Infant Sleep Machines (Pediatrics, Vol. 133)',
-      recommendedPlacement: 'Place your phone inside the crib (where your baby’s head rests) to measure the actual level your baby experiences.',
+      recommendedPlacement: 'Place your phone inside the crib (where your baby’s head rests) to measure what their ears actually experience.',
     },
   },
   hearing: {
     id: 'hearing',
     name: 'Hearing Safety',
-    shortName: 'General Safety',
+    shortName: 'Hearing Safety',
     icon: 'Shield',
-    subtitle: 'WHO & NIOSH Occupational Limits',
+    subtitle: 'WHO & NIOSH 85 dBA Limits',
     description: 'Track daily noise exposure and detect when sound levels exceed safe hearing limits.',
     defaultWeighting: 'A',
     defaultResponse: 'fast',
@@ -64,6 +68,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 70,
         label: 'Safe Sound Level',
+        verdict: 'Safe Sound Level • No Hearing Risk',
         level: 'safe',
         badge: 'Safe Indefinitely',
         advice: 'No risk of hearing damage even with continuous exposure 24 hours a day.',
@@ -72,6 +77,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 85,
         label: 'Moderate Exposure',
+        verdict: 'Moderate Exposure • Safe up to 8 Hours',
         level: 'caution',
         badge: 'Safe for 8h Limit',
         advice: 'Typical busy traffic or loud restaurant. Safe for up to 8 hours daily without hearing protection.',
@@ -80,8 +86,9 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 130,
         label: 'Hazardous Noise',
+        verdict: 'Hazardous Noise • Protection Required',
         level: 'danger',
-        badge: 'Hearing Protection Required',
+        badge: 'Hearing Hazard (>85 dBA)',
         advice: 'Exceeds 85 dBA. Every 3 dB increase halves allowable exposure time (88 dB = 4h, 91 dB = 2h, 100 dB = 15m).',
         color: '#ef4444',
       },
@@ -95,9 +102,9 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
   sleep: {
     id: 'sleep',
     name: 'Sleep & Focus',
-    shortName: 'Rest & Focus',
+    shortName: 'Sleep & Focus',
     icon: 'Moon',
-    subtitle: 'Bedroom & Study Ambient Noise',
+    subtitle: '30–45 dBA Quiet Space',
     description: 'Ensure restorative sleep environments and quiet focus areas for deep work.',
     defaultWeighting: 'A',
     defaultResponse: 'slow',
@@ -105,6 +112,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 35,
         label: 'Library Quiet',
+        verdict: 'Deep Rest Optimal • Library Quiet',
         level: 'safe',
         badge: 'Deep Rest Optimal',
         advice: 'Ideal bedroom quietness for restorative REM and deep sleep cycles.',
@@ -113,6 +121,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 45,
         label: 'Pleasant Ambient',
+        verdict: 'Good Focus & Sleep • Calm Ambient',
         level: 'safe',
         badge: 'Good Focus & Sleep',
         advice: 'Normal quiet residential interior. Suitable for focus and sleep.',
@@ -121,6 +130,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 55,
         label: 'Moderate Disruption',
+        verdict: 'Moderate Noise • May Disturb Sleep',
         level: 'caution',
         badge: 'May Disturb Sleep',
         advice: 'Noticeable background noise (AC, conversation, distant street). May wake light sleepers.',
@@ -129,6 +139,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 130,
         label: 'Sleep Disruptive',
+        verdict: 'Sleep Disruptive • Too Noisy for Rest',
         level: 'danger',
         badge: 'Too Noisy to Sleep',
         advice: 'High ambient noise level. Consider earplugs, soundproofing, or soothing white noise masking.',
@@ -143,8 +154,8 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
   },
   raw: {
     id: 'raw',
-    name: 'Pro / Unconstrained',
-    shortName: 'Pro Meter',
+    name: 'Pro / Raw',
+    shortName: 'Pro / Raw',
     icon: 'Sliders',
     subtitle: 'Full Dynamic Acoustic Range',
     description: 'Unfiltered decibel monitoring with selectable fast/slow ballistics and weighting curves.',
@@ -154,6 +165,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 40,
         label: 'Faint / Whispering',
+        verdict: 'Faint Ambient • 20–40 dB',
         level: 'safe',
         badge: '20–40 dB',
         advice: 'Quiet room or whispering.',
@@ -162,6 +174,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 70,
         label: 'Normal Speech',
+        verdict: 'Normal Speech • 40–70 dB',
         level: 'safe',
         badge: '40–70 dB',
         advice: 'Normal conversation or office ambient.',
@@ -170,6 +183,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 90,
         label: 'Loud Traffic / Machinery',
+        verdict: 'Loud Machinery • 70–90 dB',
         level: 'caution',
         badge: '70–90 dB',
         advice: 'Heavy city traffic or lawnmower.',
@@ -178,6 +192,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
       {
         maxDb: 130,
         label: 'Very Loud / Danger',
+        verdict: 'Very Loud / Hazard • 90+ dB',
         level: 'danger',
         badge: '90–130+ dB',
         advice: 'Rock concert, siren, or jet takeoff.',
