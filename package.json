@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "test": "vitest run",
     "lint": "oxlint",
+    "size": "size-limit",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -18,11 +20,13 @@
     "vite-plugin-pwa": "^2.0.0"
   },
   "devDependencies": {
+    "@size-limit/file": "^14.1.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "oxlint": "^1.81.0",
+    "size-limit": "^14.1.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0",
     "vitest": "^5.0.3"

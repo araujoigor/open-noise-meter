@@ -8,7 +8,7 @@ on:
 
 jobs:
   verify:
-    name: Test & Build
+    name: Test, Build & Bundle Size
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +28,6 @@ jobs:
 
       - name: Verify build and types
         run: bun run build
+
+      - name: Check bundle size limits
+        run: bun run size

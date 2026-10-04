@@ -78,9 +78,12 @@ bun test
 
 # 3. Verify TypeScript types and production build
 bun run build
+
+# 4. Verify bundle size remains within strict limits (<95 kB JS, <15 kB CSS)
+bun run size
 ```
 
-*If any test or TypeScript check fails, fix the code before finalizing your response.*
+*If any test, build, or bundle size check fails, fix the code before finalizing your response.*
 
 ---
 
@@ -113,5 +116,6 @@ When reviewing PRs submitted by AI agents or human contributors:
 * [ ] **Network Check:** Inspect the diff for any `fetch()`, `XMLHttpRequest`, or third-party script tags. There should be none.
 * [ ] **Acoustic Tests:** Ensure `bun test` passes and any new acoustic functions have matching tests in `src/audio/__tests__/`.
 * [ ] **Build Check:** Ensure `bun run build` succeeds cleanly with zero TypeScript errors.
+* [ ] **Bundle Size:** Ensure `bun run size` passes without exceeding limits.
 * [ ] **PWA & Offline:** Check that `dist/sw.js` and `manifest.webmanifest` are properly generated.
 * [ ] **Responsive UI:** Verify mobile layouts (especially on small smartphone screens).
