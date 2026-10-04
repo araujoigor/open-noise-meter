@@ -5,7 +5,6 @@ import { Header } from './components/Header';
 import { PresetSelector } from './components/PresetSelector';
 import { MeterDisplay } from './components/MeterDisplay';
 import { StatsCards } from './components/StatsCards';
-import { ControlBar } from './components/ControlBar';
 import { CalibrationDrawer } from './components/CalibrationDrawer';
 import { HistoryChart } from './components/HistoryChart';
 import { EducationalSection } from './components/EducationalSection';
@@ -58,7 +57,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Container */}
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+      <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
         {/* Error Alert */}
         {errorMessage && (
           <Alert variant="destructive">
@@ -74,14 +73,22 @@ export const App: React.FC = () => {
           onSelectPreset={setPreset}
         />
 
-        {/* 2. Main Hero Meter Display (Crisp digital numbers, zone bar, dynamic verdict) */}
+        {/* 2. Main Hero Meter Display (Crisp digital numbers, zone bar, dynamic verdict, and primary controls) */}
         <MeterDisplay
           currentSpl={stats.current}
           isActive={isActive}
+          status={status}
           unit={weighting}
           responseTime={responseTime}
           presetConfig={currentPresetConfig}
           activeThreshold={activeThreshold}
+          onStart={startMeter}
+          onPause={pauseMeter}
+          onResume={resumeMeter}
+          onStop={stopMeter}
+          onReset={resetStats}
+          onSelectWeighting={setWeighting}
+          onSelectResponse={setResponseTime}
         />
 
         {/* 3. Session Statistics 4-Cards */}
@@ -91,23 +98,7 @@ export const App: React.FC = () => {
           isActive={isActive}
         />
 
-        {/* 4. Controls */}
-        <div className="rounded-xl border border-zinc-800/80 bg-zinc-950/60 p-4 sm:p-5">
-          <ControlBar
-            status={status}
-            weighting={weighting}
-            responseTime={responseTime}
-            onStart={startMeter}
-            onPause={pauseMeter}
-            onResume={resumeMeter}
-            onStop={stopMeter}
-            onReset={resetStats}
-            onSelectWeighting={setWeighting}
-            onSelectResponse={setResponseTime}
-          />
-        </div>
-
-        {/* 5. Collapsible Settings / Calibration Drawer */}
+        {/* 4. Collapsible Settings / Calibration Drawer */}
         <CalibrationDrawer
           isOpen={isSettingsOpen}
           calibrationOffset={calibrationOffset}
@@ -115,14 +106,14 @@ export const App: React.FC = () => {
           onReset={resetCalibration}
         />
 
-        {/* 6. Real-time Acoustic Timeline Chart */}
+        {/* 5. Real-time Acoustic Timeline Chart */}
         <HistoryChart
           history={history}
           preset={preset}
           isActive={isActive}
         />
 
-        {/* 7. Motivation Manifesto & Educational FAQs */}
+        {/* 6. Motivation Manifesto & Educational FAQs */}
         <EducationalSection />
       </main>
 

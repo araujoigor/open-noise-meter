@@ -36,7 +36,7 @@ export const TabsList = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      'inline-flex h-10 items-center justify-center rounded-lg bg-zinc-900 p-1 text-zinc-400 border border-zinc-800',
+      'grid w-full grid-cols-2 sm:grid-cols-4 rounded-xl bg-zinc-900/90 p-1 text-zinc-400 border border-zinc-800 gap-1',
       className
     )}
     {...props}
@@ -64,10 +64,10 @@ export const TabsTrigger = React.forwardRef<
       aria-selected={isSelected}
       onClick={() => context?.onValueChange(value)}
       className={cn(
-        'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-xs sm:text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 cursor-pointer',
+        'w-full flex items-center justify-center rounded-lg px-3 py-2 text-xs sm:text-sm font-medium transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 cursor-pointer',
         isSelected
-          ? 'bg-zinc-800 text-zinc-100 shadow-sm'
-          : 'hover:text-zinc-200 hover:bg-zinc-800/40',
+          ? 'bg-zinc-800 text-zinc-100 shadow-sm border border-zinc-700/60 font-semibold'
+          : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/40',
         className
       )}
       {...props}
@@ -77,28 +77,3 @@ export const TabsTrigger = React.forwardRef<
   );
 });
 TabsTrigger.displayName = 'TabsTrigger';
-
-export interface TabsContentProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  value: string;
-}
-
-export const TabsContent = React.forwardRef<
-  HTMLDivElement,
-  TabsContentProps
->(({ className, value, children, ...props }, ref) => {
-  const context = React.useContext(TabsContext);
-  if (context?.value !== value) return null;
-
-  return (
-    <div
-      ref={ref}
-      role="tabpanel"
-      className={cn('mt-3 focus-visible:outline-none', className)}
-      {...props}
-    >
-      {children}
-    </div>
-  );
-});
-TabsContent.displayName = 'TabsContent';

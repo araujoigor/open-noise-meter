@@ -11,10 +11,10 @@ interface PresetSelectorProps {
 }
 
 const PRESET_ICONS: Record<PresetType, React.ReactNode> = {
-  nursery: <Baby className="size-3.5 mr-1.5" />,
-  hearing: <Shield className="size-3.5 mr-1.5" />,
-  sleep: <Moon className="size-3.5 mr-1.5" />,
-  raw: <Sliders className="size-3.5 mr-1.5" />,
+  nursery: <Baby className="size-4 mr-1.5 shrink-0" />,
+  hearing: <Shield className="size-4 mr-1.5 shrink-0" />,
+  sleep: <Moon className="size-4 mr-1.5 shrink-0" />,
+  raw: <Sliders className="size-4 mr-1.5 shrink-0" />,
 };
 
 export const PresetSelector: React.FC<PresetSelectorProps> = ({
@@ -28,16 +28,15 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
         value={selectedPreset}
         onValueChange={(val) => onSelectPreset(val as PresetType)}
       >
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto p-1 bg-zinc-900 border-zinc-800/80">
+        <TabsList>
           {(Object.keys(PRESETS) as PresetType[]).map((id) => (
             <TabsTrigger
               key={id}
               value={id}
               disabled={disabled}
-              className="py-2 text-xs font-medium"
             >
               {PRESET_ICONS[id]}
-              <span>{PRESETS[id].shortName}</span>
+              <span className="truncate">{PRESETS[id].shortName}</span>
             </TabsTrigger>
           ))}
         </TabsList>

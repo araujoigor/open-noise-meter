@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import type { PresetType } from '../types';
 import { Card, CardHeader, CardTitle, CardContent } from './ui/card';
-import { TrendingUp } from 'lucide-react';
+import { TrendingUp, Activity } from 'lucide-react';
 
 interface HistoryChartProps {
   history: number[];
@@ -25,6 +25,8 @@ export const HistoryChart: React.FC<HistoryChartProps> = ({
       : '45 dBA Restful Sleep Target';
 
   useEffect(() => {
+    if (!isActive) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -123,11 +125,6 @@ export const HistoryChart: React.FC<HistoryChartProps> = ({
       ctx.lineWidth = 1.5;
       ctx.lineJoin = 'round';
       ctx.stroke();
-    } else if (!isActive) {
-      ctx.font = '12px sans-serif';
-      ctx.fillStyle = '#71717a';
-      ctx.textAlign = 'center';
-      ctx.fillText('Real-time timeline will stream here while measuring', width / 2, height / 2);
     }
   }, [history, thresholdDb, thresholdLabel, preset, isActive]);
 
@@ -139,15 +136,25 @@ export const HistoryChart: React.FC<HistoryChartProps> = ({
             <TrendingUp className="size-3.5 text-zinc-400" />
             <span>Sound Level Timeline (Last 60s)</span>
           </CardTitle>
-          <span className="text-[11px] font-mono text-zinc-400">
+          <span className="text-[11px] font-mono text-zinc-500">
             Rolling Series
           </span>
         </div>
       </CardHeader>
 
       <CardContent className="p-4 sm:p-5 pt-2">
-        <div className="relative h-36 w-full overflow-hidden rounded-lg bg-zinc-900/60 border border-zinc-800">
-          <canvas ref={canvasRef} className="w-full h-full block" />
+        <div className="relative h-36 w-full overflow-hidden rounded-lg bg-zinc-900/60 border border-zinc-800 flex items-center justify-center">
+          {isActive ? (
+            <canvas ref={canvasRef} className="w-full h-full block" />
+          ) : (
+            <div className="flex flex-col items-center justify-center text-center p-4 text-zinc-500">
+              <Activity className="size-5 mb-1.5 opacity-50" />
+              <span className="text-xs font-medium">Timeline inactive</span>
+              <span className="text-[11px] text-zinc-600 mt-0.5">
+                Press Start to begin live acoustic recording
+              </span>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

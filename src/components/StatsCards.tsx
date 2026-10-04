@@ -28,11 +28,17 @@ export const StatsCards: React.FC<StatsCardsProps> = ({ stats, unit, isActive })
             </CardTitle>
           </CardHeader>
           <CardContent className="p-3.5 pt-0">
-            <div className="font-mono text-2xl font-bold text-zinc-100 tabular-nums">
-              {isActive && stats.current > 0 ? stats.current.toFixed(1) : '--.-'}
-              <span className="text-xs text-zinc-400 font-normal ml-1 font-sans">dB{unit}</span>
+            <div className="font-mono text-2xl font-bold tabular-nums">
+              {isActive && stats.current > 0 ? (
+                <>
+                  <span className="text-zinc-100">{stats.current.toFixed(1)}</span>
+                  <span className="text-xs text-zinc-400 font-normal ml-1 font-sans">dB{unit}</span>
+                </>
+              ) : (
+                <span className="text-zinc-700">--</span>
+              )}
             </div>
-            <span className="text-[10px] text-zinc-400">Real-time RMS</span>
+            <span className="text-[10px] text-zinc-500">Real-time RMS</span>
           </CardContent>
         </Card>
 
@@ -45,11 +51,17 @@ export const StatsCards: React.FC<StatsCardsProps> = ({ stats, unit, isActive })
             </CardTitle>
           </CardHeader>
           <CardContent className="p-3.5 pt-0">
-            <div className="font-mono text-2xl font-bold text-emerald-400 tabular-nums">
-              {isActive && stats.min > 0 ? stats.min.toFixed(1) : '--.-'}
-              <span className="text-xs text-emerald-400/60 font-normal ml-1 font-sans">dB{unit}</span>
+            <div className="font-mono text-2xl font-bold tabular-nums">
+              {isActive && stats.min > 0 ? (
+                <>
+                  <span className="text-emerald-400">{stats.min.toFixed(1)}</span>
+                  <span className="text-xs text-emerald-400/60 font-normal ml-1 font-sans">dB{unit}</span>
+                </>
+              ) : (
+                <span className="text-zinc-700">--</span>
+              )}
             </div>
-            <span className="text-[10px] text-zinc-400">Lowest level</span>
+            <span className="text-[10px] text-zinc-500">Lowest level</span>
           </CardContent>
         </Card>
 
@@ -62,11 +74,17 @@ export const StatsCards: React.FC<StatsCardsProps> = ({ stats, unit, isActive })
             </CardTitle>
           </CardHeader>
           <CardContent className="p-3.5 pt-0">
-            <div className="font-mono text-2xl font-bold text-blue-400 tabular-nums">
-              {isActive && stats.avg > 0 ? stats.avg.toFixed(1) : '--.-'}
-              <span className="text-xs text-blue-400/60 font-normal ml-1 font-sans">dB{unit}</span>
+            <div className="font-mono text-2xl font-bold tabular-nums">
+              {isActive && stats.avg > 0 ? (
+                <>
+                  <span className="text-blue-400">{stats.avg.toFixed(1)}</span>
+                  <span className="text-xs text-blue-400/60 font-normal ml-1 font-sans">dB{unit}</span>
+                </>
+              ) : (
+                <span className="text-zinc-700">--</span>
+              )}
             </div>
-            <span className="text-[10px] text-zinc-400">Energy average</span>
+            <span className="text-[10px] text-zinc-500">Energy average</span>
           </CardContent>
         </Card>
 
@@ -79,17 +97,23 @@ export const StatsCards: React.FC<StatsCardsProps> = ({ stats, unit, isActive })
             </CardTitle>
           </CardHeader>
           <CardContent className="p-3.5 pt-0">
-            <div className="font-mono text-2xl font-bold text-amber-400 tabular-nums">
-              {isActive && stats.max > 0 ? stats.max.toFixed(1) : '--.-'}
-              <span className="text-xs text-amber-400/60 font-normal ml-1 font-sans">dB{unit}</span>
+            <div className="font-mono text-2xl font-bold tabular-nums">
+              {isActive && stats.max > 0 ? (
+                <>
+                  <span className="text-amber-400">{stats.max.toFixed(1)}</span>
+                  <span className="text-xs text-amber-400/60 font-normal ml-1 font-sans">dB{unit}</span>
+                </>
+              ) : (
+                <span className="text-zinc-700">--</span>
+              )}
             </div>
-            <span className="text-[10px] text-zinc-400">Highest spike</span>
+            <span className="text-[10px] text-zinc-500">Highest spike</span>
           </CardContent>
         </Card>
       </div>
 
       {isActive && (
-        <div className="flex justify-between items-center px-1 text-[11px] font-mono text-zinc-400">
+        <div className="flex justify-between items-center px-1 text-[11px] font-mono text-zinc-500">
           <span>Session: {formatTime(stats.elapsedSeconds)}</span>
           <span>Peak Freq: {stats.peakFrequencyHz > 0 ? `${stats.peakFrequencyHz} Hz` : '-- Hz'}</span>
         </div>
