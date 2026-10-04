@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>OpenNoiseMeter — Free Sound Level Decibel Meter (No Ads, No Tracking)</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="Free, open-source, ad-free online decibel sound level meter (dBA, dBC, dBZ) with infant sleep white noise safety mode (AAP 50 dBA rule), live frequency spectrum, and sound masker." />
+    <meta name="keywords" content="decibel meter, noise meter, online sound meter, baby white noise safe volume, AAP white noise decibels, free decibel meter no ads, sound level meter PWA" />
+    <meta name="author" content="Igor Araujo" />
+    <meta name="theme-color" content="#09090b" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="OpenNoiseMeter — Free Decibel & Sound Level Meter (No Ads)" />
+    <meta property="og:description" content="Measure noise levels in real-time. Features infant white noise safety mode (AAP 50 dBA), live frequency spectrum, and 100% client-side privacy." />
+    <meta property="og:image" content="/pwa-512x512.png" />
+
+    <!-- Apple Web App / PWA -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="OpenNoise" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "OpenNoiseMeter",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Free and open source online decibel meter (dBA) with baby sleep / white noise machine safety checks, 100% client-side Web Audio DSP, and zero ads."
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How loud should my baby's white noise machine be?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The American Academy of Pediatrics (AAP) recommends keeping white noise machines at or below 50 dBA at the infant's crib, placed at least 7 feet (2 meters) away from the baby."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does OpenNoiseMeter record or store my audio?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All acoustic signal processing is computed 100% locally in your browser using the HTML5 Web Audio API. Audio samples are analyzed in real-time memory and immediately discarded."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100 antialiased min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

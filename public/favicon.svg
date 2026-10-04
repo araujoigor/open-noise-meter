@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" rx="24" fill="#09090b"/>
+  <rect x="2" y="2" width="96" height="96" rx="22" stroke="#27272a" stroke-width="2"/>
+  <!-- Sound level bars in Emerald gradient -->
+  <rect x="18" y="44" width="8" height="16" rx="4" fill="#10b981" />
+  <rect x="32" y="32" width="8" height="40" rx="4" fill="#10b981" />
+  <rect x="46" y="20" width="8" height="64" rx="4" fill="#34d399" />
+  <rect x="60" y="36" width="8" height="32" rx="4" fill="#10b981" />
+  <rect x="74" y="48" width="8" height="8" rx="4" fill="#10b981" />
+</svg>
