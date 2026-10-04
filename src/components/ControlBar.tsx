@@ -1,19 +1,17 @@
 import React from 'react';
 import type { MeterStatus, WeightingType, ResponseTime } from '../types';
-import { Mic, MicOff, Pause, Play, RotateCcw, SlidersHorizontal } from 'lucide-react';
+import { Button } from './ui/button';
+import { Mic, MicOff, Pause, Play, RotateCcw } from 'lucide-react';
 
 interface ControlBarProps {
   status: MeterStatus;
   weighting: WeightingType;
   responseTime: ResponseTime;
-  calibrationOffset: number;
-  isCalibOpen: boolean;
   onStart: () => void;
   onPause: () => void;
   onResume: () => void;
   onStop: () => void;
   onReset: () => void;
-  onToggleCalib: () => void;
   onSelectWeighting: (w: WeightingType) => void;
   onSelectResponse: (r: ResponseTime) => void;
 }
@@ -22,14 +20,11 @@ export const ControlBar: React.FC<ControlBarProps> = ({
   status,
   weighting,
   responseTime,
-  calibrationOffset,
-  isCalibOpen,
   onStart,
   onPause,
   onResume,
   onStop,
   onReset,
-  onToggleCalib,
   onSelectWeighting,
   onSelectResponse,
 }) => {
@@ -37,33 +32,90 @@ export const ControlBar: React.FC<ControlBarProps> = ({
   const isPaused = status === 'paused';
   const isIdle = status === 'idle' || status === 'error';
 
-  const calibDelta = calibrationOffset - 100;
-  const calibText = calibDelta >= 0 ? `+${calibDelta}` : `${calibDelta}`;
-
   return (
     <div className="w-full flex flex-col gap-4">
-      {/* Upper Control Strip: Weighting, Response Ballistics, Calibration */}
-      <div className="flex flex-wrap items-center justify-between gap-2.5 pb-2.5 border-b border-zinc-800/80">
-        {/* Acoustic Weighting Filter */}
+      {/* Primary Action Buttons */}
+      <div className="flex flex-wrap items-center justify-center gap-3">
+        {isIdle ? (
+          <Button
+            size="lg"
+            onClick={onStart}
+            className="h-12 px-8 text-base font-semibold gap-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-950 shadow-md"
+          >
+            <Mic className="size-5" />
+            <span>Start Measuring</span>
+          </Button>
+        ) : (
+          <>
+            {isRunning ? (
+              <Button
+                variant="secondary"
+                size="default"
+                onClick={onPause}
+                className="gap-2 font-medium"
+              >
+                <Pause className="size-4" />
+                <span>Pause</span>
+              </Button>
+            ) : isPaused ? (
+              <Button
+                variant="default"
+                size="default"
+                onClick={onResume}
+                className="gap-2 font-medium bg-zinc-100 text-zinc-950 hover:bg-zinc-200"
+              >
+                <Play className="size-4" />
+                <span>Resume</span>
+              </Button>
+            ) : null}
+
+            <Button
+              variant="outline"
+              size="default"
+              onClick={onReset}
+              className="gap-2 text-zinc-400 hover:text-zinc-200"
+              title="Reset session statistics"
+            >
+              <RotateCcw className="size-4" />
+              <span>Reset</span>
+            </Button>
+
+            <Button
+              variant="outline"
+              size="default"
+              onClick={onStop}
+              className="gap-2 border-red-900/40 text-red-400 hover:bg-red-950/30 hover:text-red-300"
+              title="Stop microphone"
+            >
+              <MicOff className="size-4" />
+              <span>Stop</span>
+            </Button>
+          </>
+        )}
+      </div>
+
+      {/* Quick Settings Selector Strip */}
+      <div className="flex items-center justify-between pt-2 border-t border-zinc-800/80 text-xs">
+        {/* Weighting Selector */}
         <div className="flex items-center gap-1.5">
-          <span className="text-[11px] text-zinc-500 font-mono hidden sm:inline">Filter:</span>
-          <div className="inline-flex rounded-lg border border-zinc-800 bg-zinc-900/90 p-0.5" role="group">
+          <span className="text-zinc-500 font-mono">Weighting:</span>
+          <div className="inline-flex rounded-md border border-zinc-800 bg-zinc-900 p-0.5" role="group">
             {(['A', 'C', 'Z'] as WeightingType[]).map((w) => (
               <button
                 key={w}
                 type="button"
                 onClick={() => onSelectWeighting(w)}
-                className={`rounded-md px-2.5 py-1 text-xs font-semibold font-mono transition-all cursor-pointer ${
+                className={`rounded px-2 py-0.5 text-xs font-mono font-medium transition-colors ${
                   weighting === w
                     ? 'bg-zinc-800 text-zinc-100 shadow-sm'
                     : 'text-zinc-500 hover:text-zinc-300'
                 }`}
                 title={
                   w === 'A'
-                    ? 'A-Weighting (dBA): IEC 61672 human ear curve (Recommended for nursery & everyday)'
+                    ? 'dBA (Human hearing curve - recommended for baby & everyday)'
                     : w === 'C'
-                    ? 'C-Weighting (dBC): Flat response for bass and loud machinery'
-                    : 'Z-Weighting (dBZ): Unweighted raw linear acoustic energy'
+                    ? 'dBC (Flat curve for low frequency bass)'
+                    : 'dBZ (Unweighted linear sound pressure)'
                 }
               >
                 dB{w}
@@ -72,110 +124,36 @@ export const ControlBar: React.FC<ControlBarProps> = ({
           </div>
         </div>
 
-        {/* Right side controls: Ballistics & Calibration */}
-        <div className="flex items-center gap-2">
-          {/* Response Ballistics (Slow vs Fast) */}
-          <div className="inline-flex rounded-lg border border-zinc-800 bg-zinc-900/90 p-0.5">
+        {/* Response Ballistics */}
+        <div className="flex items-center gap-1.5">
+          <span className="text-zinc-500 font-mono hidden sm:inline">Response:</span>
+          <div className="inline-flex rounded-md border border-zinc-800 bg-zinc-900 p-0.5">
             <button
               type="button"
               onClick={() => onSelectResponse('slow')}
-              className={`rounded-md px-2.5 py-1 text-[11px] font-medium transition-all cursor-pointer ${
+              className={`rounded px-2 py-0.5 text-xs font-medium transition-colors ${
                 responseTime === 'slow'
                   ? 'bg-zinc-800 text-zinc-100 shadow-sm'
                   : 'text-zinc-500 hover:text-zinc-300'
               }`}
-              title="Slow response (1000ms): Recommended for infant sleep and ambient noise"
+              title="Slow (1s): Standard for steady environmental and sleep noise"
             >
               Slow (1s)
             </button>
             <button
               type="button"
               onClick={() => onSelectResponse('fast')}
-              className={`rounded-md px-2.5 py-1 text-[11px] font-medium transition-all cursor-pointer ${
+              className={`rounded px-2 py-0.5 text-xs font-medium transition-colors ${
                 responseTime === 'fast'
                   ? 'bg-zinc-800 text-zinc-100 shadow-sm'
                   : 'text-zinc-500 hover:text-zinc-300'
               }`}
-              title="Fast response (125ms): Catches impulsive sound spikes"
+              title="Fast (125ms): Responsive to transient peaks and impulsive sounds"
             >
               Fast (125ms)
             </button>
           </div>
-
-          {/* Calibration Trigger Pill */}
-          <button
-            type="button"
-            onClick={onToggleCalib}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-[11px] font-medium transition-all cursor-pointer ${
-              isCalibOpen
-                ? 'border-emerald-500/50 bg-emerald-500/10 text-emerald-400'
-                : 'border-zinc-800 bg-zinc-900/90 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200'
-            }`}
-            title="Adjust Microphone Calibration Offset"
-          >
-            <SlidersHorizontal className="size-3" />
-            <span>Cal: {calibText} dB</span>
-          </button>
         </div>
-      </div>
-
-      {/* Main Action Area */}
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        {isIdle ? (
-          <button
-            type="button"
-            onClick={onStart}
-            className="group relative inline-flex items-center gap-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-zinc-950 font-bold px-8 py-3.5 text-sm sm:text-base shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all cursor-pointer"
-          >
-            <Mic className="size-5 transition-transform group-hover:scale-110" />
-            <span>Start Noise Meter</span>
-          </button>
-        ) : (
-          <>
-            {/* Running -> Pause */}
-            {isRunning ? (
-              <button
-                type="button"
-                onClick={onPause}
-                className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-800 hover:bg-zinc-700 text-zinc-100 font-semibold px-5 py-2.5 text-sm transition-all cursor-pointer shadow-sm"
-              >
-                <Pause className="size-4" />
-                <span>Pause</span>
-              </button>
-            ) : isPaused ? (
-              <button
-                type="button"
-                onClick={onResume}
-                className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold px-5 py-2.5 text-sm transition-all cursor-pointer shadow-lg shadow-emerald-500/20"
-              >
-                <Play className="size-4" />
-                <span>Resume</span>
-              </button>
-            ) : null}
-
-            {/* Reset Stats */}
-            <button
-              type="button"
-              onClick={onReset}
-              className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/90 hover:border-zinc-700 text-zinc-400 hover:text-zinc-200 font-medium px-4 py-2.5 text-sm transition-all cursor-pointer"
-              title="Reset Min, Max, and Average"
-            >
-              <RotateCcw className="size-4" />
-              <span>Reset</span>
-            </button>
-
-            {/* Stop Meter */}
-            <button
-              type="button"
-              onClick={onStop}
-              className="inline-flex items-center gap-2 rounded-xl border border-red-900/40 bg-red-950/20 hover:bg-red-950/40 text-red-400 font-medium px-4 py-2.5 text-sm transition-all cursor-pointer"
-              title="Turn off microphone and stop sampling"
-            >
-              <MicOff className="size-4" />
-              <span>Stop</span>
-            </button>
-          </>
-        )}
       </div>
     </div>
   );
