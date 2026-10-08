@@ -1,5 +1,5 @@
 import React from 'react';
-import { BookOpen, CheckCircle2, Volume2, Waves, MapPin, AlertTriangle } from 'lucide-react';
+import { BookOpen, CheckCircle2, Volume2, Waves, MapPin, AlertTriangle, ExternalLink } from 'lucide-react';
 
 export const GuidelinesView: React.FC = () => {
   return (
@@ -7,7 +7,7 @@ export const GuidelinesView: React.FC = () => {
       {/* 1. Header Banner */}
       <div className="rounded-md border border-[#1e253e] bg-[#0c101d] p-5 sm:p-6 shadow-2xl space-y-4">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-8 items-center justify-center rounded-md bg-[#161d32] text-emerald-400">
+          <div className="flex size-8 items-center justify-center rounded-md bg-[#161d32] text-indigo-400">
             <BookOpen className="size-4.5" />
           </div>
           <div>
@@ -22,11 +22,22 @@ export const GuidelinesView: React.FC = () => {
 
         {/* The AAP Research Findings */}
         <div className="rounded-md border border-emerald-900/40 bg-emerald-950/20 p-4 sm:p-5 space-y-3">
-          <div className="flex items-center gap-2">
-            <span className="rounded-md bg-emerald-900/60 px-2 py-0.5 text-[10px] font-mono text-emerald-300 border border-emerald-700/50">
-              AAP Landmark Study (Pediatrics, Vol. 133)
-            </span>
-            <span className="font-semibold text-[#f0f4fc] text-xs">Infant Sleep Machines</span>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <span className="rounded-md bg-emerald-900/60 px-2 py-0.5 text-[10px] font-mono text-emerald-300 border border-emerald-700/50">
+                AAP Landmark Study (Pediatrics, Vol. 133)
+              </span>
+              <span className="font-semibold text-[#f0f4fc] text-xs">Infant Sleep Machines</span>
+            </div>
+            <a
+              href="https://publications.aap.org/pediatrics/article/133/4/e862/32685/Infant-Sleep-Machines-and-Hazardous-Sound-Levels"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[11px] font-medium text-sky-400 hover:text-sky-300 hover:underline transition-colors"
+            >
+              <span>Read Original Paper (SickKids)</span>
+              <ExternalLink className="size-3" />
+            </a>
           </div>
           <p className="text-xs sm:text-sm text-[#c4d0e6] leading-relaxed">
             In a landmark study by researchers at the <strong>Hospital for Sick Children (Toronto)</strong> and published by the <strong>American Academy of Pediatrics (AAP)</strong>, scientists tested 14 commercial infant sound machines. At maximum volume, all 14 exceeded 50 dBA at 30 cm and 100 cm, and several generated hazardous levels exceeding 85 dBA.
@@ -66,10 +77,21 @@ export const GuidelinesView: React.FC = () => {
         </div>
 
         {/* NIOSH / Adult Hearing Comparison */}
-        <div className="rounded-md border border-[#1b2238] bg-[#101424] p-4 text-xs space-y-1.5">
-          <div className="flex items-center gap-2 text-amber-400 font-semibold">
-            <AlertTriangle className="size-3.5" />
-            <span>Adult Hearing Protection: NIOSH 85 dBA Limit</span>
+        <div className="rounded-md border border-[#1b2238] bg-[#101424] p-4 text-xs space-y-2">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <div className="flex items-center gap-2 text-amber-400 font-semibold">
+              <AlertTriangle className="size-3.5" />
+              <span>Adult Hearing Protection: NIOSH 85 dBA Limit</span>
+            </div>
+            <a
+              href="https://www.cdc.gov/niosh/docs/98-126/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[11px] font-medium text-amber-400/90 hover:text-amber-300 hover:underline transition-colors"
+            >
+              <span>CDC / NIOSH Criteria</span>
+              <ExternalLink className="size-3" />
+            </a>
           </div>
           <p className="text-[#8e9ebc] leading-relaxed">
             For adults and older children, NIOSH establishes <strong>85 dBA</strong> as the maximum safe threshold for an 8-hour workday. With the 3 dB exchange rate, allowable safe exposure cuts in half for every 3 dB increase (88 dB = 4 hours, 91 dB = 2 hours, 100 dB = 15 minutes).
@@ -80,10 +102,22 @@ export const GuidelinesView: React.FC = () => {
       {/* 2. Decibel Science Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* dBA */}
-        <div className="rounded-md border border-[#1f2742] bg-[#0e1220]/95 p-5 shadow-xl space-y-2">
-          <div className="flex items-center gap-2 text-[#f0f4fc]">
-            <Volume2 className="size-4 text-sky-400" />
-            <h4 className="text-sm font-semibold">What is dBA? (A-Weighting)</h4>
+        <div className="rounded-md border border-[#1f2742] bg-[#0e1220]/95 p-5 shadow-xl space-y-2.5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-[#f0f4fc]">
+              <Volume2 className="size-4 text-sky-400" />
+              <h4 className="text-sm font-semibold">What is dBA? (A-Weighting)</h4>
+            </div>
+            <a
+              href="https://webstore.iec.ch/en/publication/5766"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[10px] font-mono text-sky-400/80 hover:text-sky-300 transition-colors"
+              title="IEC 61672-1:2013 Standard"
+            >
+              <span>IEC 61672</span>
+              <ExternalLink className="size-2.5" />
+            </a>
           </div>
           <p className="text-xs text-[#8e9ebc] leading-relaxed">
             Human hearing is non-linear: we are most sensitive to frequencies between <strong>1 kHz and 5 kHz</strong> (where speech and infant cries occur) and less sensitive to low bass rumble. <strong>dBA (A-weighting)</strong> applies the international <strong>IEC 61672-1:2013</strong> curve to represent how loud sound actually feels to human ears.
@@ -91,10 +125,22 @@ export const GuidelinesView: React.FC = () => {
         </div>
 
         {/* Leq */}
-        <div className="rounded-md border border-[#1f2742] bg-[#0e1220]/95 p-5 shadow-xl space-y-2">
-          <div className="flex items-center gap-2 text-[#f0f4fc]">
-            <Waves className="size-4 text-blue-400" />
-            <h4 className="text-sm font-semibold">Why Leq Energy Average Matters</h4>
+        <div className="rounded-md border border-[#1f2742] bg-[#0e1220]/95 p-5 shadow-xl space-y-2.5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2 text-[#f0f4fc]">
+              <Waves className="size-4 text-blue-400" />
+              <h4 className="text-sm font-semibold">Why Leq Energy Average Matters</h4>
+            </div>
+            <a
+              href="https://www.iso.org/standard/59765.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-[10px] font-mono text-sky-400/80 hover:text-sky-300 transition-colors"
+              title="ISO 1996 Standard"
+            >
+              <span>ISO 1996</span>
+              <ExternalLink className="size-2.5" />
+            </a>
           </div>
           <p className="text-xs text-[#8e9ebc] leading-relaxed">
             A simple arithmetic average (SPL sum / N) under-reports the biological impact of loud spikes. <strong>L<sub>eq</sub> (Equivalent Continuous Sound Level)</strong> uses the logarithmic <strong>ISO 1996</strong> energy integration formula to measure total acoustic energy transferred to the ear over time.

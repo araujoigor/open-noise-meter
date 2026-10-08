@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             type="button"
             onClick={() => onTabChange('meter')}
-            className="flex size-8 items-center justify-center rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:scale-105 transition-transform cursor-pointer"
+            className="flex size-8 items-center justify-center rounded-md bg-indigo-500/15 border border-indigo-500/30 text-indigo-400 hover:scale-105 transition-transform cursor-pointer"
             title="OpenNoiseMeter"
           >
             <Waves className="size-4.5 stroke-[2.2]" />
@@ -61,7 +61,7 @@ export const Header: React.FC<HeaderProps> = ({
                     : 'text-[#8292b0] hover:text-[#f0f4fc] hover:bg-[#161c30]'
                 }`}
               >
-                <Icon className={`size-3.5 ${isActive ? 'text-emerald-400' : 'text-[#8292b0]'}`} />
+                <Icon className={`size-3.5 ${isActive ? 'text-indigo-400' : 'text-[#8292b0]'}`} />
                 <span>{tab.label}</span>
                 {tab.id === 'meter' && isMeasuring && (
                   <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" />

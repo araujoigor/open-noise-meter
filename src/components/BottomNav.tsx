@@ -50,7 +50,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
               <div className="relative">
                 <Icon
                   className={`size-5 transition-transform duration-150 ${
-                    isActive ? 'scale-110 text-emerald-400' : 'text-[#8292b0]'
+                    isActive ? 'scale-110 text-indigo-400' : 'text-[#8292b0]'
                   }`}
                 />
                 {/* Live pulse indicator on Meter icon when measuring in background */}

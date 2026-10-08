@@ -34,7 +34,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
       <div className="rounded-md border border-[#1f2742] bg-[#0e1220]/95 p-5 sm:p-6 shadow-2xl space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="flex size-7 items-center justify-center rounded-md bg-[#161d32] text-emerald-400">
+            <div className="flex size-7 items-center justify-center rounded-md bg-[#161d32] text-indigo-400">
               <SlidersHorizontal className="size-4" />
             </div>
             <div>
@@ -61,7 +61,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         {isMeasuring && (
           <div className="flex items-center justify-between p-3 rounded-md bg-[#12172a] border border-[#1f2742] text-xs font-mono">
             <span className="text-[#8292b0]">Live Calibrated Reading:</span>
-            <span className="font-bold text-emerald-400 text-sm">{currentSpl.toFixed(1)} dB{weighting}</span>
+            <span className="font-bold text-indigo-400 text-sm">{currentSpl.toFixed(1)} dB{weighting}</span>
           </div>
         )}
 
@@ -74,7 +74,7 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               step="1"
               value={calibrationOffset}
               onChange={(e) => onOffsetChange(Number(e.target.value))}
-              className="w-full h-2 rounded-md bg-[#182036] accent-emerald-500 cursor-pointer"
+              className="w-full h-2 rounded-md bg-[#182036] accent-indigo-400 cursor-pointer"
             />
             <span className="font-mono text-xs font-bold text-[#f0f4fc] w-14 text-right">
               {deltaText}
@@ -184,12 +184,12 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
           </div>
           <div className="p-2.5 rounded-md bg-[#12172a] border border-[#1b2238]">
             <span className="text-[#6c7d9e] block text-[10px]">PRIVACY</span>
-            <span className="text-emerald-400 font-semibold">100% In-RAM</span>
+            <span className="text-indigo-400 font-semibold">100% In-RAM</span>
           </div>
         </div>
 
         <div className="flex items-start gap-2.5 pt-2 text-xs text-[#8e9ebc]">
-          <ShieldCheck className="size-4 text-emerald-400 shrink-0 mt-0.5" />
+          <ShieldCheck className="size-4 text-indigo-400 shrink-0 mt-0.5" />
           <span>
             <strong>Zero Tracking Guarantee:</strong> Microphone audio samples are processed exclusively in volatile browser RAM using the HTML5 Web Audio API. Audio is never recorded, saved to disk, or sent to external servers. Zero cookies.
           </span>

@@ -392,50 +392,66 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
           </div>
         </div>
 
-        {/* Dynamic Contextual Verdict Banner */}
-        {isActive && activeThreshold ? (
-          <div
-            className={`flex items-start gap-3 rounded-md border p-3 text-xs sm:text-sm ${
-              isDanger
+        {/* Dynamic Contextual Verdict Banner - Fixed Height to Eliminate Content Shift */}
+        <div
+          className={`h-[4.75rem] sm:h-[4.25rem] w-full rounded-md border p-3 flex items-center transition-colors duration-200 overflow-hidden ${
+            isActive && activeThreshold
+              ? isDanger
                 ? 'border-rose-900/50 bg-rose-950/25 text-rose-200'
                 : isCaution
                 ? 'border-amber-900/50 bg-amber-950/25 text-amber-200'
                 : 'border-emerald-900/50 bg-emerald-950/25 text-emerald-200'
-            }`}
-          >
-            {isDanger ? (
-              <AlertCircle className="size-4.5 text-rose-400 shrink-0 mt-0.5" />
-            ) : isCaution ? (
-              <AlertTriangle className="size-4.5 text-amber-400 shrink-0 mt-0.5" />
-            ) : (
-              <CheckCircle2 className="size-4.5 text-emerald-400 shrink-0 mt-0.5" />
-            )}
-            <div className="space-y-0.5">
-              <div className="font-semibold text-[#f0f4fc]">
-                {activeThreshold.label} ({stats.current.toFixed(1)} dB{unit})
-              </div>
-              <div className="text-xs text-[#c4d0e6] leading-relaxed">
-                {activeThreshold.advice}
+              : 'border-[#1f2742] bg-[#12172a]/70 text-[#c4d0e6]'
+          }`}
+        >
+          {isActive && activeThreshold ? (
+            <div className="flex items-center gap-3 w-full">
+              {isDanger ? (
+                <AlertCircle className="size-5 text-rose-400 shrink-0" />
+              ) : isCaution ? (
+                <AlertTriangle className="size-5 text-amber-400 shrink-0" />
+              ) : (
+                <CheckCircle2 className="size-5 text-emerald-400 shrink-0" />
+              )}
+              <div className="min-w-0 flex-1 space-y-0.5">
+                <div className="font-semibold text-[#f0f4fc] text-xs sm:text-sm truncate">
+                  {activeThreshold.verdict || activeThreshold.label}
+                </div>
+                <div className="text-[11px] sm:text-xs text-[#c4d0e6] leading-snug line-clamp-2">
+                  {activeThreshold.advice}
+                </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2.5 rounded-md border border-[#1f2742] bg-[#12172a]/70 p-3 text-xs text-[#c4d0e6]">
-            {presetConfig.id === 'nursery' ? (
-              <>
-                <MapPin className="size-4 text-emerald-400 shrink-0" />
-                <span>
-                  <strong>7-Foot Rule:</strong> Place noise machine 7+ ft (2m) from crib. Measure where baby’s head rests to verify volume stays below 50 dBA.
-                </span>
-              </>
-            ) : (
-              <>
-                <CheckCircle2 className="size-4 text-[#8a9ab8] shrink-0" />
-                <span>{presetConfig.guidance.ruleText}</span>
-              </>
-            )}
-          </div>
-        )}
+          ) : (
+            <div className="flex items-center gap-3 w-full">
+              {presetConfig.id === 'nursery' ? (
+                <>
+                  <MapPin className="size-5 text-sky-400 shrink-0" />
+                  <div className="min-w-0 flex-1 space-y-0.5">
+                    <div className="font-semibold text-[#f0f4fc] text-xs sm:text-sm truncate">
+                      7-Foot Placement Rule (AAP)
+                    </div>
+                    <div className="text-[11px] sm:text-xs text-[#a4b4d2] leading-snug line-clamp-2">
+                      Place noise machine 7+ ft away. Measure at baby’s head to stay under 50 dBA.
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <CheckCircle2 className="size-5 text-[#8a9ab8] shrink-0" />
+                  <div className="min-w-0 flex-1 space-y-0.5">
+                    <div className="font-semibold text-[#f0f4fc] text-xs sm:text-sm truncate">
+                      {presetConfig.guidance.ruleTitle}
+                    </div>
+                    <div className="text-[11px] sm:text-xs text-[#a4b4d2] leading-snug line-clamp-2">
+                      {presetConfig.guidance.ruleText}
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </div>
 
         {/* Integrated Primary Controls & DSP Filter Toggles */}
         <div className="flex flex-wrap items-center justify-between gap-3 pt-4 sm:pt-5 border-t border-[#1b2238]">
@@ -563,7 +579,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
               <canvas ref={canvasRef} className="w-full h-full block" />
             ) : (
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 px-5 py-3 text-center text-xs font-mono text-[#607194]">
-                <Activity className="size-4 opacity-50 shrink-0 text-emerald-400/70" />
+                <Activity className="size-4 opacity-50 shrink-0 text-indigo-400/70" />
                 <span className="leading-relaxed">Timeline will record once measurement starts</span>
               </div>
             )}

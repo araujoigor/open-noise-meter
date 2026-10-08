@@ -17,7 +17,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Peaceful & Safe for Infant Sleep',
         level: 'safe',
         badge: 'Safe for Sleep',
-        advice: 'Peaceful nursery ambient level. Excellent and safe for uninterrupted infant sleep.',
+        advice: 'Peaceful ambient noise. Safe for uninterrupted, restorative infant sleep.',
         color: '#10b981', // emerald-500
       },
       {
@@ -26,7 +26,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Optimal White Noise • AAP Crib Limit Target',
         level: 'safe',
         badge: 'AAP Target (<50 dBA)',
-        advice: 'Ideal white noise level. Meets American Academy of Pediatrics (AAP) recommendations for infant sleep.',
+        advice: 'AAP target range (<50 dBA). Masks noise while protecting developing hearing.',
         color: '#10b981', // emerald-500
       },
       {
@@ -35,7 +35,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Caution: Borderline for Continuous Sleep',
         level: 'caution',
         badge: 'Caution: Borderline',
-        advice: 'Acceptable for short soothing, but too loud for all-night sleep. Lower volume or move machine 7+ ft away.',
+        advice: 'Exceeds AAP 50 dBA crib limit. Lower volume or move machine 7+ ft away.',
         color: '#f59e0b', // amber-500
       },
       {
@@ -44,7 +44,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: "Too Loud for Baby's Ears!",
         level: 'danger',
         badge: 'Too Loud for Baby!',
-        advice: 'Exceeds pediatric safety limits (>60 dBA). Can impact infant auditory cortex development. Move machine 7+ ft away or lower volume immediately.',
+        advice: 'Exceeds pediatric safety limit (>60 dBA). Lower volume or move away immediately.',
         color: '#ef4444', // red-500
       },
     ],
@@ -71,7 +71,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Safe Sound Level • No Hearing Risk',
         level: 'safe',
         badge: 'Safe Indefinitely',
-        advice: 'No risk of hearing damage even with continuous exposure 24 hours a day.',
+        advice: 'Safe sound level. Zero risk of hearing fatigue or damage even with 24h exposure.',
         color: '#10b981',
       },
       {
@@ -80,7 +80,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Moderate Exposure • Safe up to 8 Hours',
         level: 'caution',
         badge: 'Safe for 8h Limit',
-        advice: 'Typical busy traffic or loud restaurant. Safe for up to 8 hours daily without hearing protection.',
+        advice: 'Moderate daily noise. Safe for up to 8 hours daily without hearing protection.',
         color: '#f59e0b',
       },
       {
@@ -89,7 +89,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Hazardous Noise • Protection Required',
         level: 'danger',
         badge: 'Hearing Hazard (>85 dBA)',
-        advice: 'Exceeds 85 dBA. Every 3 dB increase halves allowable exposure time (88 dB = 4h, 91 dB = 2h, 100 dB = 15m).',
+        advice: 'Hazardous noise (>85 dBA). Safe exposure cut in half for every 3 dB increase.',
         color: '#ef4444',
       },
     ],
@@ -115,7 +115,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Deep Rest Optimal • Library Quiet',
         level: 'safe',
         badge: 'Deep Rest Optimal',
-        advice: 'Ideal bedroom quietness for restorative REM and deep sleep cycles.',
+        advice: 'Ideal restorative quietness for deep and REM sleep cycles.',
         color: '#10b981',
       },
       {
@@ -124,7 +124,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Good Focus & Sleep • Calm Ambient',
         level: 'safe',
         badge: 'Good Focus & Sleep',
-        advice: 'Normal quiet residential interior. Suitable for focus and sleep.',
+        advice: 'Comfortable quiet interior level. Suitable for focus and sleep.',
         color: '#10b981',
       },
       {
@@ -133,7 +133,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Moderate Noise • May Disturb Sleep',
         level: 'caution',
         badge: 'May Disturb Sleep',
-        advice: 'Noticeable background noise (AC, conversation, distant street). May wake light sleepers.',
+        advice: 'Noticeable background noise. May wake sensitive light sleepers.',
         color: '#f59e0b',
       },
       {
@@ -142,7 +142,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Sleep Disruptive • Too Noisy for Rest',
         level: 'danger',
         badge: 'Too Noisy to Sleep',
-        advice: 'High ambient noise level. Consider earplugs, soundproofing, or soothing white noise masking.',
+        advice: 'Disruptive for sleep. Consider earplugs or reducing sound sources.',
         color: '#ef4444',
       },
     ],
@@ -168,7 +168,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Faint Ambient • 20–40 dB',
         level: 'safe',
         badge: '20–40 dB',
-        advice: 'Quiet room or whispering.',
+        advice: 'Faint ambient floor, quiet room, or distant whisper.',
         color: '#10b981',
       },
       {
@@ -177,7 +177,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Normal Speech • 40–70 dB',
         level: 'safe',
         badge: '40–70 dB',
-        advice: 'Normal conversation or office ambient.',
+        advice: 'Normal conversation and typical indoor workplace activity.',
         color: '#3b82f6',
       },
       {
@@ -186,7 +186,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Loud Machinery • 70–90 dB',
         level: 'caution',
         badge: '70–90 dB',
-        advice: 'Heavy city traffic or lawnmower.',
+        advice: 'Heavy city traffic, power tools, or elevated machinery.',
         color: '#f59e0b',
       },
       {
@@ -195,7 +195,7 @@ export const PRESETS: Record<PresetType, PresetConfig> = {
         verdict: 'Very Loud / Hazard • 90+ dB',
         level: 'danger',
         badge: '90–130+ dB',
-        advice: 'Rock concert, siren, or jet takeoff.',
+        advice: 'Extreme acoustic pressure. Protective equipment advised.',
         color: '#ef4444',
       },
     ],
