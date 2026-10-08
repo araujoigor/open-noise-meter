@@ -2,6 +2,8 @@
 
 > **Free, open-source, and 100% ad-free sound level decibel meter (dBA) with baby sleep / white noise machine safety checks.**
 
+🌐 **Live App:** [open-noise-meter.araujoigor.com](https://open-noise-meter.araujoigor.com)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Zero Ads](https://img.shields.io/badge/Ads-Zero-emerald.svg)]()
 [![Zero Cookies](https://img.shields.io/badge/Cookies-None-emerald.svg)]()
@@ -101,17 +103,17 @@ bun run build
 
 ## 🌐 Deployment & Subdomain Setup
 
-OpenNoiseMeter is built to run on its own domain or subdomain (e.g., `noise-meter.araujoigor.com`):
+OpenNoiseMeter is built to run on its own domain or subdomain (e.g., `open-noise-meter.araujoigor.com`):
 
 ### Why a Subdomain is Recommended for PWAs
-* **Microphone Permissions:** Browser prompts explicitly for `noise-meter.araujoigor.com` rather than your personal root domain, isolating sensor permissions.
+* **Microphone Permissions:** Browser prompts explicitly for `open-noise-meter.araujoigor.com` rather than your personal root domain, isolating sensor permissions.
 * **Root Scope:** The PWA manifest and Service Worker install at root (`/`), preventing iOS WebKit subpath navigation bugs.
 * **Zero Configuration:** Any developer can clone, fork, and deploy directly to Vercel, Netlify, or Cloudflare Pages with zero path rewrites.
 
 ### Deploy to Vercel
 1. Push to GitHub.
 2. Import project into Vercel.
-3. Add custom domain (e.g. `noise-meter.araujoigor.com`).
+3. Add custom domain (`open-noise-meter.araujoigor.com`).
 
 ---
 

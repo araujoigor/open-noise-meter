@@ -12,11 +12,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
-        name: 'OpenNoiseMeter — Sound Level Decibel Meter',
-        short_name: 'OpenNoise',
+        name: 'OpenNoiseMeter',
+        short_name: 'OpenNoiseMeter',
         description: 'Free, open-source, ad-free sound level decibel meter with infant sleep & white noise safety mode.',
-        theme_color: '#09090b',
-        background_color: '#09090b',
+        theme_color: '#0a0d18',
+        background_color: '#0a0d18',
         display: 'standalone',
         orientation: 'portrait-primary',
         icons: [
