@@ -26,7 +26,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
       <div
         role="tablist"
         aria-label="Acoustic Measurement Presets"
-        className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 rounded-xl bg-slate-900/90 border border-slate-800/80 backdrop-blur-sm"
+        className="grid grid-cols-2 sm:grid-cols-4 gap-1 p-1 rounded-md bg-slate-900/90 border border-slate-800/80 backdrop-blur-sm"
       >
         {(Object.keys(PRESETS) as PresetType[]).map((id) => {
           const isSelected = selectedPreset === id;
@@ -37,7 +37,7 @@ export const PresetSelector: React.FC<PresetSelectorProps> = ({
               aria-selected={isSelected}
               disabled={disabled}
               onClick={() => onSelectPreset(id)}
-              className={`flex items-center justify-center px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150 cursor-pointer disabled:pointer-events-none disabled:opacity-50 ${
+              className={`flex items-center justify-center px-3 py-2 rounded-md text-xs font-medium transition-all duration-150 cursor-pointer disabled:pointer-events-none disabled:opacity-50 ${
                 isSelected
                   ? 'bg-slate-800 text-slate-100 font-semibold shadow-sm border border-slate-700/60'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'

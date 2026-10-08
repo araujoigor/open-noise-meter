@@ -186,7 +186,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
   }, [history, targetThresholdDb, presetConfig.id, isActive]);
 
   return (
-    <div className="w-full rounded-2xl border border-slate-800/80 bg-[#0d1017]/90 shadow-xl backdrop-blur-md overflow-hidden">
+    <div className="w-full rounded-md border border-slate-800/80 bg-[#0d1017]/90 shadow-xl backdrop-blur-md overflow-hidden">
       {/* Top Console Strip: Context & Live Status */}
       <div className="flex items-center justify-between border-b border-slate-800/80 px-4 py-2.5 sm:px-6 bg-slate-900/40">
         <div className="flex items-center gap-2">
@@ -218,7 +218,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
         {/* The 4 Key Metrics (Together side-by-side above the fold) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
           {/* 1. Live SPL */}
-          <div className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-3 sm:p-3.5 transition-all">
+          <div className="rounded-md border border-slate-800/90 bg-slate-900/60 p-3 sm:p-3.5 transition-all">
             <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-slate-400">
               <span className="flex items-center gap-1.5">
                 <Activity className="size-3.5 text-slate-300" />
@@ -255,7 +255,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
           </div>
 
           {/* 2. Average (Leq) */}
-          <div className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-3 sm:p-3.5 transition-all">
+          <div className="rounded-md border border-slate-800/90 bg-slate-900/60 p-3 sm:p-3.5 transition-all">
             <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-slate-400">
               <span className="flex items-center gap-1.5">
                 <Zap className="size-3.5 text-sky-400" />
@@ -288,8 +288,8 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
             </div>
           </div>
 
-          {/* 3. Min */}
-          <div className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-3 sm:p-3.5 transition-all">
+          {/* 3. Minimum */}
+          <div className="rounded-md border border-slate-800/90 bg-slate-900/60 p-3 sm:p-3.5 transition-all">
             <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-slate-400">
               <span className="flex items-center gap-1.5">
                 <ArrowDown className="size-3.5 text-emerald-400" />
@@ -323,7 +323,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
           </div>
 
           {/* 4. Peak (Max) */}
-          <div className="rounded-xl border border-slate-800/90 bg-slate-900/60 p-3 sm:p-3.5 transition-all">
+          <div className="rounded-md border border-slate-800/90 bg-slate-900/60 p-3 sm:p-3.5 transition-all">
             <div className="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-slate-400">
               <span className="flex items-center gap-1.5">
                 <ArrowUp className="size-3.5 text-amber-400" />
@@ -358,7 +358,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
         </div>
 
         {/* Precision Range & Target Meter (Directly below the 4 numbers) */}
-        <div className="space-y-1.5 rounded-xl border border-slate-800/80 bg-slate-900/40 p-3 sm:p-3.5">
+        <div className="space-y-1.5 rounded-md border border-slate-800/80 bg-slate-900/40 p-3 sm:p-3.5">
           <div className="flex justify-between items-center text-[10px] sm:text-[11px] font-mono text-slate-400 px-0.5">
             <span>{minRange} dB</span>
             <span className="font-semibold text-emerald-400 flex items-center gap-1">
@@ -368,7 +368,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
           </div>
 
           {/* The Multi-Zone Track */}
-          <div className="relative h-3 w-full rounded-full bg-slate-950 border border-slate-800 overflow-hidden flex">
+          <div className="relative h-3 w-full rounded-sm bg-slate-950 border border-slate-800 overflow-hidden flex">
             {/* Safe Zone (Green) */}
             <div
               style={{ width: `${thresholdPercent}%` }}
@@ -385,7 +385,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
             {/* Live Indicator Cursor */}
             {isActive && (
               <div
-                className="absolute top-0 bottom-0 w-2.5 -ml-1 rounded-full bg-slate-100 shadow-md shadow-white/60 transition-all duration-75"
+                className="absolute top-0 bottom-0 w-2.5 -ml-1 rounded-sm bg-slate-100 shadow-md shadow-white/60 transition-all duration-75"
                 style={{ left: `${pointerPercent}%` }}
               />
             )}
@@ -395,7 +395,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
         {/* Dynamic Contextual Verdict Banner */}
         {isActive && activeThreshold ? (
           <div
-            className={`flex items-start gap-3 rounded-xl border p-3 text-xs sm:text-sm ${
+            className={`flex items-start gap-3 rounded-md border p-3 text-xs sm:text-sm ${
               isDanger
                 ? 'border-rose-900/60 bg-rose-950/30 text-rose-200'
                 : isCaution
@@ -420,7 +420,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-2.5 rounded-xl border border-slate-800/80 bg-slate-900/40 p-3 text-xs text-slate-300">
+          <div className="flex items-center gap-2.5 rounded-md border border-slate-800/80 bg-slate-900/40 p-3 text-xs text-slate-300">
             {presetConfig.id === 'nursery' ? (
               <>
                 <MapPin className="size-4 text-emerald-400 shrink-0" />
@@ -445,7 +445,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
               <button
                 type="button"
                 onClick={onStart}
-                className="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-100 hover:bg-slate-200 active:scale-[0.98] text-slate-950 font-semibold text-xs sm:text-sm h-9 px-4 sm:px-5 shadow-md transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-slate-100 hover:bg-slate-200 active:scale-[0.98] text-slate-950 font-semibold text-xs sm:text-sm h-9 px-4 sm:px-5 shadow-md transition-all cursor-pointer"
               >
                 <Mic className="size-4" />
                 <span>Start Measuring</span>
@@ -456,7 +456,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
                   <button
                     type="button"
                     onClick={onPause}
-                    className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-100 font-medium text-xs h-8.5 px-3 border border-slate-700/60 transition-colors cursor-pointer"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-100 font-medium text-xs h-8.5 px-3 border border-slate-700/60 transition-colors cursor-pointer"
                   >
                     <Pause className="size-3.5" />
                     <span>Pause</span>
@@ -465,7 +465,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
                   <button
                     type="button"
                     onClick={onResume}
-                    className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs h-8.5 px-3 transition-colors cursor-pointer"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs h-8.5 px-3 transition-colors cursor-pointer"
                   >
                     <Play className="size-3.5" />
                     <span>Resume</span>
@@ -475,7 +475,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
                 <button
                   type="button"
                   onClick={onReset}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-slate-900/60 hover:bg-slate-800 text-slate-300 font-medium text-xs h-8.5 px-3 border border-slate-800 transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-md bg-slate-900/60 hover:bg-slate-800 text-slate-300 font-medium text-xs h-8.5 px-3 border border-slate-800 transition-colors cursor-pointer"
                   title="Reset session statistics"
                 >
                   <RotateCcw className="size-3.5 text-slate-400" />
@@ -485,7 +485,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
                 <button
                   type="button"
                   onClick={onStop}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-rose-950/20 hover:bg-rose-950/40 text-rose-300 font-medium text-xs h-8.5 px-3 border border-rose-900/40 transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-md bg-rose-950/20 hover:bg-rose-950/40 text-rose-300 font-medium text-xs h-8.5 px-3 border border-rose-900/40 transition-colors cursor-pointer"
                   title="Stop microphone"
                 >
                   <MicOff className="size-3.5" />
@@ -498,13 +498,13 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
           {/* Quick Filter Selection Pills */}
           <div className="flex items-center gap-2 text-xs">
             {/* Weighting Selector */}
-            <div className="inline-flex rounded-lg border border-slate-800 bg-slate-900/80 p-0.5">
+            <div className="inline-flex rounded-md border border-slate-800 bg-slate-900/80 p-0.5">
               {(['A', 'C', 'Z'] as WeightingType[]).map((w) => (
                 <button
                   key={w}
                   type="button"
                   onClick={() => onSelectWeighting(w)}
-                  className={`rounded-md px-2 py-1 text-[11px] font-mono font-medium transition-colors cursor-pointer ${
+                  className={`rounded-sm px-2 py-1 text-[11px] font-mono font-medium transition-colors cursor-pointer ${
                     unit === w
                       ? 'bg-slate-800 text-slate-100 shadow-sm border border-slate-700/60'
                       : 'text-slate-400 hover:text-slate-200'
@@ -516,11 +516,11 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
             </div>
 
             {/* Response Time */}
-            <div className="inline-flex rounded-lg border border-slate-800 bg-slate-900/80 p-0.5">
+            <div className="inline-flex rounded-md border border-slate-800 bg-slate-900/80 p-0.5">
               <button
                 type="button"
                 onClick={() => onSelectResponse('slow')}
-                className={`rounded-md px-2 py-1 text-[11px] font-medium transition-colors cursor-pointer ${
+                className={`rounded-sm px-2 py-1 text-[11px] font-medium transition-colors cursor-pointer ${
                   responseTime === 'slow'
                     ? 'bg-slate-800 text-slate-100 shadow-sm border border-slate-700/60'
                     : 'text-slate-400 hover:text-slate-200'
@@ -531,7 +531,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
               <button
                 type="button"
                 onClick={() => onSelectResponse('fast')}
-                className={`rounded-md px-2 py-1 text-[11px] font-medium transition-colors cursor-pointer ${
+                className={`rounded-sm px-2 py-1 text-[11px] font-medium transition-colors cursor-pointer ${
                   responseTime === 'fast'
                     ? 'bg-slate-800 text-slate-100 shadow-sm border border-slate-700/60'
                     : 'text-slate-400 hover:text-slate-200'
@@ -544,7 +544,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
         </div>
 
         {/* Embedded 60-Second Rolling Waveform Timeline */}
-        <div className="rounded-xl border border-slate-800/80 bg-slate-950/70 p-2.5 sm:p-3 space-y-1.5">
+        <div className="rounded-md border border-slate-800/80 bg-slate-950/70 p-2.5 sm:p-3 space-y-1.5">
           <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 px-0.5">
             <span className="flex items-center gap-1.5">
               <Activity className="size-3 text-slate-400" />
@@ -558,7 +558,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
             )}
           </div>
 
-          <div className="relative h-24 w-full overflow-hidden rounded-lg bg-slate-950 border border-slate-800/60 flex items-center justify-center">
+          <div className="relative h-24 w-full overflow-hidden rounded-md bg-slate-950 border border-slate-800/60 flex items-center justify-center">
             {isActive ? (
               <canvas ref={canvasRef} className="w-full h-full block" />
             ) : (

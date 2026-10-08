@@ -57,7 +57,7 @@ export const App: React.FC = () => {
       <main className="flex-1 w-full max-w-4xl mx-auto px-3.5 sm:px-6 py-4 sm:py-6 space-y-4">
         {/* Error Alert */}
         {errorMessage && (
-          <div className="flex items-center gap-2.5 rounded-xl border border-rose-900/60 bg-rose-950/40 p-3 text-xs sm:text-sm text-rose-200">
+          <div className="flex items-center gap-2.5 rounded-md border border-rose-900/60 bg-rose-950/40 p-3 text-xs sm:text-sm text-rose-200">
             <AlertCircle className="size-4.5 text-rose-400 shrink-0" />
             <div>
               <span className="font-semibold">Microphone Error: </span>

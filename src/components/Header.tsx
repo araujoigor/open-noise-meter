@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="mx-auto flex h-13 max-w-4xl items-center justify-between px-4 sm:px-6">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="flex size-8 items-center justify-center rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+          <div className="flex size-8 items-center justify-center rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
             <Waves className="size-4.5 stroke-[2.2]" />
           </div>
           <div className="flex flex-col">
@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="text-sm font-semibold tracking-tight text-slate-100">
                 OpenNoiseMeter
               </span>
-              <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-slate-800/80 px-2 py-0.5 text-[10px] font-mono text-slate-400 border border-slate-700/50">
+              <span className="hidden sm:inline-flex items-center gap-1 rounded-md bg-slate-800/80 px-2 py-0.5 text-[10px] font-mono text-slate-400 border border-slate-700/50">
                 <ShieldCheck className="size-3 text-emerald-400" />
                 Zero Tracking • No Ads
               </span>

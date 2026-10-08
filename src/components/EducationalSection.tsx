@@ -24,7 +24,7 @@ export const EducationalSection: React.FC = () => {
   return (
     <section className="space-y-5 pt-2 text-slate-300">
       {/* Motivation Story Card */}
-      <div className="rounded-2xl border border-slate-800/80 bg-slate-900/60 p-5 sm:p-6 shadow-md backdrop-blur-sm space-y-3">
+      <div className="rounded-md border border-slate-800/80 bg-slate-900/60 p-5 sm:p-6 shadow-md backdrop-blur-sm space-y-3">
         <div className="flex items-center gap-2">
           <span className="rounded-md bg-slate-800 px-2 py-0.5 text-[10px] font-mono text-slate-300 border border-slate-700/60">
             Why OpenNoiseMeter Exists
@@ -78,7 +78,7 @@ export const EducationalSection: React.FC = () => {
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className="rounded-xl border border-slate-800/80 bg-slate-900/40 p-4 space-y-1.5"
+              className="rounded-md border border-slate-800/80 bg-slate-900/40 p-4 space-y-1.5"
             >
               <h5 className="font-semibold text-slate-200 text-xs sm:text-sm">
                 {faq.q}

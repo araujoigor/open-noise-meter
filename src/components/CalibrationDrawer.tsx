@@ -20,7 +20,7 @@ export const CalibrationDrawer: React.FC<CalibrationDrawerProps> = ({
   const deltaText = delta >= 0 ? `+${delta} dB` : `${delta} dB`;
 
   return (
-    <div className="rounded-xl border border-slate-800/90 bg-slate-900/80 p-4 sm:p-5 shadow-lg backdrop-blur-sm animate-in fade-in slide-in-from-top-2 duration-150 space-y-3">
+    <div className="rounded-md border border-slate-800/90 bg-slate-900/80 p-4 sm:p-5 shadow-lg backdrop-blur-sm animate-in fade-in slide-in-from-top-2 duration-150 space-y-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-300">
           <SlidersHorizontal className="size-3.5 text-slate-400" />
@@ -45,7 +45,7 @@ export const CalibrationDrawer: React.FC<CalibrationDrawerProps> = ({
             step="1"
             value={calibrationOffset}
             onChange={(e) => onOffsetChange(Number(e.target.value))}
-            className="w-full h-2 rounded-lg bg-slate-800 accent-emerald-500 cursor-pointer"
+            className="w-full h-2 rounded-md bg-slate-800 accent-emerald-500 cursor-pointer"
           />
           <span className="font-mono text-xs font-bold text-slate-200 w-14 text-right">
             {deltaText}
@@ -55,7 +55,7 @@ export const CalibrationDrawer: React.FC<CalibrationDrawerProps> = ({
         <button
           type="button"
           onClick={onReset}
-          className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-700/80 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs px-3 h-8 transition-colors cursor-pointer"
+          className="inline-flex items-center justify-center gap-1.5 rounded-md border border-slate-700/80 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs px-3 h-8 transition-colors cursor-pointer"
           title="Reset calibration to +0 dB baseline"
         >
           <RotateCcw className="size-3 text-slate-400" />

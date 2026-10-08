@@ -14,7 +14,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl border border-slate-800 bg-[#0c0f16] shadow-2xl p-0">
+      <div className="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-md border border-slate-800 bg-[#0c0f16] shadow-2xl p-0">
         {/* Header */}
         <div className="flex flex-row items-center justify-between p-5 border-b border-slate-800/80 sticky top-0 bg-[#0c0f16]/95 backdrop-blur-md z-10">
           <div className="flex items-center gap-2.5">
@@ -43,7 +43,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({
         {/* Content Body */}
         <div className="p-5 space-y-5 text-xs text-slate-300 leading-relaxed">
           {/* Section 1: The AAP Study */}
-          <div className="rounded-xl border border-emerald-900/50 bg-emerald-950/20 p-4 space-y-2.5">
+          <div className="rounded-md border border-emerald-900/50 bg-emerald-950/20 p-4 space-y-2.5">
             <div className="flex items-center gap-2">
               <span className="rounded-md bg-emerald-900/60 px-2 py-0.5 text-[10px] font-mono text-emerald-300 border border-emerald-700/50">
                 AAP Study (Pediatrics, Vol. 133)
@@ -93,7 +93,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({
           </div>
 
           {/* Section 4: Privacy */}
-          <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-3.5 flex items-start gap-3">
+          <div className="rounded-md border border-slate-800 bg-slate-900/40 p-3.5 flex items-start gap-3">
             <ShieldCheck className="size-4 text-emerald-400 shrink-0 mt-0.5" />
             <div>
               <span className="font-semibold text-slate-200 block text-xs">100% Client-Side Privacy</span>
@@ -108,7 +108,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-3.5 py-1.5 font-medium transition-colors cursor-pointer"
+            className="rounded-md bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-3.5 py-1.5 font-medium transition-colors cursor-pointer"
           >
             Close
           </button>
