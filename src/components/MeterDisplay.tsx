@@ -438,14 +438,14 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
         )}
 
         {/* Integrated Primary Controls & DSP Filter Toggles */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-[#1b2238]">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 sm:pt-5 border-t border-[#1b2238]">
           {/* Main Action Buttons */}
           <div className="flex items-center gap-2">
             {isIdle ? (
               <button
                 type="button"
                 onClick={onStart}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#f0f4fc] hover:bg-white active:scale-[0.98] text-[#0a0d18] font-semibold text-xs sm:text-sm h-9 px-4 sm:px-5 shadow-lg shadow-indigo-950/40 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-md bg-[#f0f4fc] hover:bg-white active:scale-[0.98] text-[#0a0d18] font-semibold text-xs sm:text-sm h-10 px-5 shadow-lg shadow-indigo-950/40 transition-all cursor-pointer"
               >
                 <Mic className="size-4" />
                 <span>Start Measuring</span>
@@ -456,18 +456,18 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
                   <button
                     type="button"
                     onClick={onPause}
-                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-[#1a2138] hover:bg-[#222b48] text-[#f0f4fc] font-medium text-xs h-8.5 px-3 border border-[#263152] transition-colors cursor-pointer"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-[#1a2138] hover:bg-[#222b48] text-[#f0f4fc] font-medium text-xs sm:text-sm h-10 px-4 border border-[#263152] transition-colors cursor-pointer"
                   >
-                    <Pause className="size-3.5" />
+                    <Pause className="size-4" />
                     <span>Pause</span>
                   </button>
                 ) : isPaused ? (
                   <button
                     type="button"
                     onClick={onResume}
-                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs h-8.5 px-3 transition-colors cursor-pointer"
+                    className="inline-flex items-center justify-center gap-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs sm:text-sm h-10 px-4 transition-colors cursor-pointer"
                   >
-                    <Play className="size-3.5" />
+                    <Play className="size-4" />
                     <span>Resume</span>
                   </button>
                 ) : null}
@@ -475,17 +475,17 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
                 <button
                   type="button"
                   onClick={onReset}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-md bg-[#121729]/80 hover:bg-[#1a2138] text-[#a4b3cf] font-medium text-xs h-8.5 px-3 border border-[#1d253e] transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-md bg-[#121729]/80 hover:bg-[#1a2138] text-[#a4b3cf] font-medium text-xs sm:text-sm h-10 px-3.5 border border-[#1d253e] transition-colors cursor-pointer"
                   title="Reset session statistics"
                 >
-                  <RotateCcw className="size-3.5 text-[#8292b0]" />
+                  <RotateCcw className="size-3.5" />
                   <span>Reset</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={onStop}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-md bg-rose-950/20 hover:bg-rose-950/40 text-rose-300 font-medium text-xs h-8.5 px-3 border border-rose-900/40 transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-md bg-rose-950/20 hover:bg-rose-950/40 text-rose-300 font-medium text-xs sm:text-sm h-10 px-3.5 border border-rose-900/40 transition-colors cursor-pointer"
                   title="Stop microphone"
                 >
                   <MicOff className="size-3.5" />
@@ -504,7 +504,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
                   key={w}
                   type="button"
                   onClick={() => onSelectWeighting(w)}
-                  className={`rounded-sm px-2 py-1 text-[11px] font-mono font-medium transition-colors cursor-pointer ${
+                  className={`rounded-sm px-2.5 py-1.5 text-[11px] font-mono font-medium transition-colors cursor-pointer ${
                     unit === w
                       ? 'bg-[#1f2742] text-[#f0f4fc] shadow-sm border border-[#2d395e]'
                       : 'text-[#8292b0] hover:text-[#f0f4fc]'
@@ -520,7 +520,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
               <button
                 type="button"
                 onClick={() => onSelectResponse('slow')}
-                className={`rounded-sm px-2 py-1 text-[11px] font-medium transition-colors cursor-pointer ${
+                className={`rounded-sm px-2.5 py-1.5 text-[11px] font-medium transition-colors cursor-pointer ${
                   responseTime === 'slow'
                     ? 'bg-[#1f2742] text-[#f0f4fc] shadow-sm border border-[#2d395e]'
                     : 'text-[#8292b0] hover:text-[#f0f4fc]'
@@ -531,7 +531,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
               <button
                 type="button"
                 onClick={() => onSelectResponse('fast')}
-                className={`rounded-sm px-2 py-1 text-[11px] font-medium transition-colors cursor-pointer ${
+                className={`rounded-sm px-2.5 py-1.5 text-[11px] font-medium transition-colors cursor-pointer ${
                   responseTime === 'fast'
                     ? 'bg-[#1f2742] text-[#f0f4fc] shadow-sm border border-[#2d395e]'
                     : 'text-[#8292b0] hover:text-[#f0f4fc]'
@@ -544,7 +544,7 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
         </div>
 
         {/* Embedded 60-Second Rolling Waveform Timeline */}
-        <div className="rounded-md border border-[#1b2238] bg-[#0b0e1a]/90 p-2.5 sm:p-3 space-y-1.5">
+        <div className="rounded-md border border-[#1b2238] bg-[#0b0e1a]/90 p-3 sm:p-4 space-y-2">
           <div className="flex items-center justify-between text-[11px] font-mono text-[#8292b0] px-0.5">
             <span className="flex items-center gap-1.5">
               <Activity className="size-3 text-[#8292b0]" />
@@ -558,13 +558,13 @@ export const MeterDisplay: React.FC<MeterDisplayProps> = ({
             )}
           </div>
 
-          <div className="relative h-24 w-full overflow-hidden rounded-sm bg-[#070912] border border-[#181f33] flex items-center justify-center">
+          <div className="relative h-24 sm:h-28 w-full overflow-hidden rounded-sm bg-[#070912] border border-[#181f33] flex items-center justify-center">
             {isActive ? (
               <canvas ref={canvasRef} className="w-full h-full block" />
             ) : (
-              <div className="flex items-center gap-2 text-xs font-mono text-[#526284]">
-                <Activity className="size-3.5 opacity-40" />
-                <span>Timeline will record once measurement starts</span>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 px-5 py-3 text-center text-xs font-mono text-[#607194]">
+                <Activity className="size-4 opacity-50 shrink-0 text-emerald-400/70" />
+                <span className="leading-relaxed">Timeline will record once measurement starts</span>
               </div>
             )}
           </div>

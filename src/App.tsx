@@ -54,7 +54,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Container */}
-      <main className="flex-1 w-full max-w-4xl mx-auto px-3.5 sm:px-6 py-4 sm:py-6">
+      <main className="flex-1 w-full max-w-4xl mx-auto px-3.5 sm:px-6 pt-4 sm:pt-6 pb-24 md:pb-8">
         {/* Error Alert */}
         {errorMessage && (
           <div className="mb-4 flex items-center gap-2.5 rounded-md border border-rose-900/60 bg-rose-950/40 p-3 text-xs sm:text-sm text-rose-200">
