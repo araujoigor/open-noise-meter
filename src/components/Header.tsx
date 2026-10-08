@@ -14,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({
   isSettingsOpen,
 }) => {
   return (
-    <header className="sticky top-0 z-30 w-full border-b border-slate-800/80 bg-[#090c10]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-30 w-full border-b border-[#1b2238] bg-[#0a0d18]/90 backdrop-blur-md">
       <div className="mx-auto flex h-13 max-w-4xl items-center justify-between px-4 sm:px-6">
         {/* Brand */}
         <div className="flex items-center gap-3">
@@ -23,15 +23,15 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold tracking-tight text-slate-100">
+              <span className="text-sm font-semibold tracking-tight text-[#f0f4fc]">
                 OpenNoiseMeter
               </span>
-              <span className="hidden sm:inline-flex items-center gap-1 rounded-md bg-slate-800/80 px-2 py-0.5 text-[10px] font-mono text-slate-400 border border-slate-700/50">
+              <span className="hidden sm:inline-flex items-center gap-1 rounded-md bg-[#13192a] px-2 py-0.5 text-[10px] font-mono text-[#8a99b5] border border-[#222c48]">
                 <ShieldCheck className="size-3 text-emerald-400" />
                 Zero Tracking • No Ads
               </span>
             </div>
-            <span className="text-[10px] text-slate-400 font-mono hidden xs:block">
+            <span className="text-[10px] text-[#7182a3] font-mono hidden xs:block">
               Client-Side Web Audio Decibel Meter
             </span>
           </div>
@@ -44,10 +44,10 @@ export const Header: React.FC<HeaderProps> = ({
             variant={isSettingsOpen ? 'secondary' : 'outline'}
             size="sm"
             onClick={onToggleSettings}
-            className="text-xs h-7.5 px-2.5 gap-1.5 border-slate-800 bg-slate-900/60 hover:bg-slate-800 text-slate-300"
+            className="text-xs h-7.5 px-2.5 gap-1.5 border-[#1f2742] bg-[#121728]/80 hover:bg-[#1c233c] text-[#c4d0e6]"
             title="Calibrate microphone offset (±30 dB)"
           >
-            <SlidersHorizontal className="size-3.5 text-slate-400" />
+            <SlidersHorizontal className="size-3.5 text-[#8a99b5]" />
             <span className="hidden sm:inline">Calibrate</span>
           </Button>
 
@@ -56,10 +56,10 @@ export const Header: React.FC<HeaderProps> = ({
             variant="outline"
             size="sm"
             onClick={onOpenMethodology}
-            className="text-xs h-7.5 px-2.5 gap-1.5 border-slate-800 bg-slate-900/60 hover:bg-slate-800 text-slate-300"
+            className="text-xs h-7.5 px-2.5 gap-1.5 border-[#1f2742] bg-[#121728]/80 hover:bg-[#1c233c] text-[#c4d0e6]"
             title="AAP Infant Sleep Guidelines & Decibel Science"
           >
-            <BookOpen className="size-3.5 text-slate-400" />
+            <BookOpen className="size-3.5 text-[#8a99b5]" />
             <span className="hidden sm:inline">Guide</span>
           </Button>
 
@@ -74,7 +74,7 @@ export const Header: React.FC<HeaderProps> = ({
             <Button
               variant="ghost"
               size="icon"
-              className="size-7.5 text-slate-400 hover:text-slate-100 hover:bg-slate-800/60"
+              className="size-7.5 text-[#8a99b5] hover:text-[#f0f4fc] hover:bg-[#1a2138]"
             >
               <svg className="size-4" viewBox="0 0 24 24" fill="currentColor">
                 <path

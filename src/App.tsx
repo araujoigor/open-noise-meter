@@ -45,7 +45,7 @@ export const App: React.FC = () => {
   const isActive = status === 'running' || status === 'paused';
 
   return (
-    <div className="min-h-screen bg-[#090c10] text-slate-100 flex flex-col font-sans selection:bg-slate-800 selection:text-slate-100 antialiased">
+    <div className="min-h-screen bg-[#0a0d18] text-[#f0f4fc] flex flex-col font-sans selection:bg-[#202844] selection:text-[#f0f4fc] antialiased">
       {/* Navbar */}
       <Header
         onOpenMethodology={() => setIsMethodologyOpen(true)}

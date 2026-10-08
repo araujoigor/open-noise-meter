@@ -22,33 +22,33 @@ export const EducationalSection: React.FC = () => {
   ];
 
   return (
-    <section className="space-y-5 pt-2 text-slate-300">
+    <section className="space-y-5 pt-2 text-[#c4d0e6]">
       {/* Motivation Story Card */}
-      <div className="rounded-md border border-slate-800/80 bg-slate-900/60 p-5 sm:p-6 shadow-md backdrop-blur-sm space-y-3">
+      <div className="rounded-md border border-[#1c243c] bg-[#0e1322]/80 p-5 sm:p-6 shadow-xl backdrop-blur-sm space-y-3">
         <div className="flex items-center gap-2">
-          <span className="rounded-md bg-slate-800 px-2 py-0.5 text-[10px] font-mono text-slate-300 border border-slate-700/60">
+          <span className="rounded-md bg-[#151c30] px-2 py-0.5 text-[10px] font-mono text-[#a4b4d2] border border-[#222c4a]">
             Why OpenNoiseMeter Exists
           </span>
         </div>
-        <h3 className="text-base sm:text-lg font-bold text-slate-100">
+        <h3 className="text-base sm:text-lg font-bold text-[#f0f4fc]">
           Tired of ad-loaded apps for something so simple
         </h3>
 
-        <div className="space-y-3 text-xs sm:text-sm text-slate-400 leading-relaxed">
+        <div className="space-y-3 text-xs sm:text-sm text-[#8e9ebc] leading-relaxed">
           <p>
-            The reason I created <strong className="text-slate-200">OpenNoiseMeter</strong> is personal: I wanted to check if my daughter’s white noise machine was too loud and protect her developing hearing.
+            The reason I created <strong className="text-[#f0f4fc]">OpenNoiseMeter</strong> is personal: I wanted to check if my daughter’s white noise machine was too loud and protect her developing hearing.
           </p>
           <p>
             When searching for a decibel meter on the app stores, every single application was loaded with obnoxious popups, subscription prompts, and invasive trackers.{' '}
-            <strong className="text-slate-200">
+            <strong className="text-[#f0f4fc]">
               You already paid for the hardware in your phone. Why should you have to endure ads or pay recurring subscriptions just to access your own microphone sensor?
             </strong>
           </p>
           <p>
-            I believe the web platform and <strong className="text-slate-200">Progressive Web Apps (PWAs)</strong> offer a free, open, and user-respecting alternative to native app store gatekeepers. This project is 100% open source, stores zero data, uses zero cookies, and will forever remain completely free.
+            I believe the web platform and <strong className="text-[#f0f4fc]">Progressive Web Apps (PWAs)</strong> offer a free, open, and user-respecting alternative to native app store gatekeepers. This project is 100% open source, stores zero data, uses zero cookies, and will forever remain completely free.
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-slate-800/80 text-xs text-slate-400">
+          <div className="flex flex-wrap items-center gap-4 pt-3 border-t border-[#1b2238] text-xs text-[#8a99b5]">
             <div className="flex items-center gap-1.5">
               <Heart className="size-3.5 text-rose-400" />
               <span>Open Source (MIT)</span>
@@ -68,8 +68,8 @@ export const EducationalSection: React.FC = () => {
       {/* FAQs */}
       <div className="space-y-3">
         <div className="flex items-center gap-2 px-1">
-          <HelpCircle className="size-4 text-slate-400" />
-          <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <HelpCircle className="size-4 text-[#8292b0]" />
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-[#8292b0]">
             Frequently Asked Questions
           </h4>
         </div>
@@ -78,12 +78,12 @@ export const EducationalSection: React.FC = () => {
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className="rounded-md border border-slate-800/80 bg-slate-900/40 p-4 space-y-1.5"
+              className="rounded-md border border-[#1a2238] bg-[#0e1322]/50 p-4 space-y-1.5"
             >
-              <h5 className="font-semibold text-slate-200 text-xs sm:text-sm">
+              <h5 className="font-semibold text-[#f0f4fc] text-xs sm:text-sm">
                 {faq.q}
               </h5>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-[#8e9ebc] leading-relaxed">
                 {faq.a}
               </p>
             </div>

@@ -7,8 +7,8 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #090c10;
-  color: #f1f5f9;
+  background-color: #0a0d18;
+  color: #f0f4fc;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,12 +20,12 @@ body {
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: #0e1220;
 }
 ::-webkit-scrollbar-thumb {
-  background: #21262d;
+  background: #232b42;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #30363d;
+  background: #333e60;
 }
