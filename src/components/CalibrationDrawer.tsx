@@ -1,7 +1,4 @@
 import React from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
 import { SlidersHorizontal, RotateCcw } from 'lucide-react';
 
 interface CalibrationDrawerProps {
@@ -23,52 +20,48 @@ export const CalibrationDrawer: React.FC<CalibrationDrawerProps> = ({
   const deltaText = delta >= 0 ? `+${delta} dB` : `${delta} dB`;
 
   return (
-    <Card className="border-zinc-800 bg-zinc-900/60 shadow-sm animate-in fade-in slide-in-from-top-2 duration-150">
-      <CardHeader className="p-4 sm:p-5 pb-2">
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-300">
-            <SlidersHorizontal className="size-3.5 text-zinc-400" />
-            <span>Microphone Calibration & Offset</span>
-          </CardTitle>
-          <Badge variant="outline" className="font-mono text-xs border-zinc-700 text-zinc-300">
-            Offset: {deltaText}
-          </Badge>
+    <div className="rounded-xl border border-slate-800/90 bg-slate-900/80 p-4 sm:p-5 shadow-lg backdrop-blur-sm animate-in fade-in slide-in-from-top-2 duration-150 space-y-3">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-300">
+          <SlidersHorizontal className="size-3.5 text-slate-400" />
+          <span>Microphone Calibration & Offset</span>
         </div>
-        <CardDescription className="text-xs text-zinc-400 mt-1">
-          Consumer phone and laptop microphones are pre-calibrated to a standard baseline. If you have an{' '}
-          <strong className="text-zinc-200">Apple Watch (Noise app)</strong> or hardware meter, you can fine-tune here.
-        </CardDescription>
-      </CardHeader>
+        <span className="font-mono text-xs px-2 py-0.5 rounded-md bg-slate-800 border border-slate-700/60 text-slate-200">
+          Offset: {deltaText}
+        </span>
+      </div>
 
-      <CardContent className="p-4 sm:p-5 pt-3">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex-1 flex items-center gap-3">
-            <input
-              type="range"
-              min="70"
-              max="130"
-              step="1"
-              value={calibrationOffset}
-              onChange={(e) => onOffsetChange(Number(e.target.value))}
-              className="w-full h-2 rounded-lg bg-zinc-800 accent-zinc-100 cursor-pointer"
-            />
-            <span className="font-mono text-xs font-bold text-zinc-200 w-16 text-right">
-              {deltaText}
-            </span>
-          </div>
+      <p className="text-xs text-slate-400 leading-relaxed">
+        Consumer smartphone and laptop microphones are calibrated to an acoustic baseline. If you have an{' '}
+        <strong className="text-slate-200">Apple Watch (Noise app)</strong> or hardware decibel meter, you can fine-tune here.
+      </p>
 
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onReset}
-            className="text-xs gap-1.5 h-8"
-            title="Reset calibration to +0 dB default"
-          >
-            <RotateCcw className="size-3" />
-            <span>Reset Default</span>
-          </Button>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
+        <div className="flex-1 flex items-center gap-3">
+          <input
+            type="range"
+            min="70"
+            max="130"
+            step="1"
+            value={calibrationOffset}
+            onChange={(e) => onOffsetChange(Number(e.target.value))}
+            className="w-full h-2 rounded-lg bg-slate-800 accent-emerald-500 cursor-pointer"
+          />
+          <span className="font-mono text-xs font-bold text-slate-200 w-14 text-right">
+            {deltaText}
+          </span>
         </div>
-      </CardContent>
-    </Card>
+
+        <button
+          type="button"
+          onClick={onReset}
+          className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-slate-700/80 bg-slate-800/80 hover:bg-slate-700 text-slate-300 text-xs px-3 h-8 transition-colors cursor-pointer"
+          title="Reset calibration to +0 dB baseline"
+        >
+          <RotateCcw className="size-3 text-slate-400" />
+          <span>Reset Default</span>
+        </button>
+      </div>
+    </div>
   );
 };

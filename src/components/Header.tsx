@@ -1,7 +1,6 @@
 import React from 'react';
-import { Volume2, BookOpen, SlidersHorizontal } from 'lucide-react';
+import { Waves, BookOpen, SlidersHorizontal, ShieldCheck } from 'lucide-react';
 import { Button } from './ui/button';
-import { Badge } from './ui/badge';
 
 interface HeaderProps {
   onOpenMethodology: () => void;
@@ -15,35 +14,41 @@ export const Header: React.FC<HeaderProps> = ({
   isSettingsOpen,
 }) => {
   return (
-    <header className="sticky top-0 z-30 w-full border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
-      <div className="mx-auto flex h-14 max-w-4xl items-center justify-between px-4 sm:px-6">
+    <header className="sticky top-0 z-30 w-full border-b border-slate-800/80 bg-[#090c10]/90 backdrop-blur-md">
+      <div className="mx-auto flex h-13 max-w-4xl items-center justify-between px-4 sm:px-6">
         {/* Brand */}
-        <div className="flex items-center gap-2.5">
-          <div className="flex size-7 items-center justify-center rounded-md bg-zinc-100 text-zinc-950">
-            <Volume2 className="size-4 stroke-[2.5]" />
+        <div className="flex items-center gap-3">
+          <div className="flex size-8 items-center justify-center rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+            <Waves className="size-4.5 stroke-[2.2]" />
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold tracking-tight text-zinc-100">
-              OpenNoiseMeter
+          <div className="flex flex-col">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-semibold tracking-tight text-slate-100">
+                OpenNoiseMeter
+              </span>
+              <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-slate-800/80 px-2 py-0.5 text-[10px] font-mono text-slate-400 border border-slate-700/50">
+                <ShieldCheck className="size-3 text-emerald-400" />
+                Zero Tracking • No Ads
+              </span>
+            </div>
+            <span className="text-[10px] text-slate-400 font-mono hidden xs:block">
+              Client-Side Web Audio Decibel Meter
             </span>
-            <Badge variant="outline" className="hidden sm:inline-flex text-[10px] font-mono py-0 h-4 border-zinc-800 text-zinc-400">
-              No Ads • 0 Cookies
-            </Badge>
           </div>
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           {/* Settings / Calibration Toggle */}
           <Button
             variant={isSettingsOpen ? 'secondary' : 'outline'}
             size="sm"
             onClick={onToggleSettings}
-            className="text-xs h-8 gap-1.5"
-            title="Microphone Calibration & Response Settings"
+            className="text-xs h-7.5 px-2.5 gap-1.5 border-slate-800 bg-slate-900/60 hover:bg-slate-800 text-slate-300"
+            title="Calibrate microphone offset (±30 dB)"
           >
-            <SlidersHorizontal className="size-3.5" />
-            <span className="hidden sm:inline">Settings</span>
+            <SlidersHorizontal className="size-3.5 text-slate-400" />
+            <span className="hidden sm:inline">Calibrate</span>
           </Button>
 
           {/* Guide Modal */}
@@ -51,10 +56,10 @@ export const Header: React.FC<HeaderProps> = ({
             variant="outline"
             size="sm"
             onClick={onOpenMethodology}
-            className="text-xs h-8 gap-1.5"
+            className="text-xs h-7.5 px-2.5 gap-1.5 border-slate-800 bg-slate-900/60 hover:bg-slate-800 text-slate-300"
             title="AAP Infant Sleep Guidelines & Decibel Science"
           >
-            <BookOpen className="size-3.5" />
+            <BookOpen className="size-3.5 text-slate-400" />
             <span className="hidden sm:inline">Guide</span>
           </Button>
 
@@ -66,7 +71,11 @@ export const Header: React.FC<HeaderProps> = ({
             className="inline-flex"
             title="View Open Source Code on GitHub"
           >
-            <Button variant="ghost" size="icon" className="size-8 text-zinc-400 hover:text-zinc-100">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-7.5 text-slate-400 hover:text-slate-100 hover:bg-slate-800/60"
+            >
               <svg className="size-4" viewBox="0 0 24 24" fill="currentColor">
                 <path
                   fillRule="evenodd"

@@ -4,13 +4,10 @@ import { PRESETS } from './constants/presets';
 import { Header } from './components/Header';
 import { PresetSelector } from './components/PresetSelector';
 import { MeterDisplay } from './components/MeterDisplay';
-import { StatsCards } from './components/StatsCards';
 import { CalibrationDrawer } from './components/CalibrationDrawer';
-import { HistoryChart } from './components/HistoryChart';
 import { EducationalSection } from './components/EducationalSection';
 import { MethodologyModal } from './components/MethodologyModal';
 import { Footer } from './components/Footer';
-import { Alert, AlertTitle, AlertDescription } from './components/ui/alert';
 import { AlertCircle } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -48,7 +45,7 @@ export const App: React.FC = () => {
   const isActive = status === 'running' || status === 'paused';
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col font-sans selection:bg-zinc-800 selection:text-zinc-100 antialiased">
+    <div className="min-h-screen bg-[#090c10] text-slate-100 flex flex-col font-sans selection:bg-slate-800 selection:text-slate-100 antialiased">
       {/* Navbar */}
       <Header
         onOpenMethodology={() => setIsMethodologyOpen(true)}
@@ -56,26 +53,29 @@ export const App: React.FC = () => {
         isSettingsOpen={isSettingsOpen}
       />
 
-      {/* Main Container */}
-      <main className="flex-1 w-full max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+      {/* Main Container: Focused Above-the-Fold Audio Cockpit */}
+      <main className="flex-1 w-full max-w-4xl mx-auto px-3.5 sm:px-6 py-4 sm:py-6 space-y-4">
         {/* Error Alert */}
         {errorMessage && (
-          <Alert variant="destructive">
-            <AlertCircle className="size-4" />
-            <AlertTitle>Microphone Error</AlertTitle>
-            <AlertDescription>{errorMessage}</AlertDescription>
-          </Alert>
+          <div className="flex items-center gap-2.5 rounded-xl border border-rose-900/60 bg-rose-950/40 p-3 text-xs sm:text-sm text-rose-200">
+            <AlertCircle className="size-4.5 text-rose-400 shrink-0" />
+            <div>
+              <span className="font-semibold">Microphone Error: </span>
+              <span>{errorMessage}</span>
+            </div>
+          </div>
         )}
 
-        {/* 1. Context Purpose Selector Tabs */}
+        {/* 1. Context Purpose Mode Selector Tabs */}
         <PresetSelector
           selectedPreset={preset}
           onSelectPreset={setPreset}
         />
 
-        {/* 2. Main Hero Meter Display (Crisp digital numbers, zone bar, dynamic verdict, and primary controls) */}
+        {/* 2. Unified Master Audio Console (The 4 metrics together, range meter below, verdict, controls, & timeline) */}
         <MeterDisplay
-          currentSpl={stats.current}
+          stats={stats}
+          history={history}
           isActive={isActive}
           status={status}
           unit={weighting}
@@ -91,14 +91,7 @@ export const App: React.FC = () => {
           onSelectResponse={setResponseTime}
         />
 
-        {/* 3. Session Statistics 4-Cards */}
-        <StatsCards
-          stats={stats}
-          unit={weighting}
-          isActive={isActive}
-        />
-
-        {/* 4. Collapsible Settings / Calibration Drawer */}
+        {/* 3. Collapsible Calibration Drawer (±30 dB) */}
         <CalibrationDrawer
           isOpen={isSettingsOpen}
           calibrationOffset={calibrationOffset}
@@ -106,14 +99,7 @@ export const App: React.FC = () => {
           onReset={resetCalibration}
         />
 
-        {/* 5. Real-time Acoustic Timeline Chart */}
-        <HistoryChart
-          history={history}
-          preset={preset}
-          isActive={isActive}
-        />
-
-        {/* 6. Motivation Manifesto & Educational FAQs */}
+        {/* 4. Below-the-fold: Motivation Manifesto & Educational FAQs */}
         <EducationalSection />
       </main>
 
