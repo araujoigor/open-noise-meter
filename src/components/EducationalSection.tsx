@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, ShieldCheck, Smartphone, HelpCircle } from 'lucide-react';
+import { Heart, ShieldCheck, Smartphone, HelpCircle, CheckCircle2, BookOpen, Volume2, Waves } from 'lucide-react';
 
 export const EducationalSection: React.FC = () => {
   const faqs = [
@@ -22,8 +22,79 @@ export const EducationalSection: React.FC = () => {
   ];
 
   return (
-    <section className="space-y-5 pt-2 text-[#c4d0e6]">
-      {/* Motivation Story Card */}
+    <section id="guidelines" className="space-y-6 pt-2 text-[#c4d0e6]">
+      {/* 1. AAP Pediatric Guidelines & Infant Sleep Science */}
+      <div className="rounded-md border border-[#1e253e] bg-[#0c101d] p-5 sm:p-6 shadow-2xl space-y-4">
+        <div className="flex items-center gap-2">
+          <div className="flex size-7 items-center justify-center rounded-md bg-[#161d32] text-emerald-400">
+            <BookOpen className="size-4" />
+          </div>
+          <div>
+            <h3 className="text-base font-bold text-[#f0f4fc]">
+              Infant Sleep Guidelines & White Noise Science
+            </h3>
+            <p className="text-xs text-[#8292b0]">
+              American Academy of Pediatrics (AAP) Recommendations & Safe Sleep Limits
+            </p>
+          </div>
+        </div>
+
+        {/* The AAP Research Findings */}
+        <div className="rounded-md border border-emerald-900/40 bg-emerald-950/20 p-4 space-y-3">
+          <div className="flex items-center gap-2">
+            <span className="rounded-md bg-emerald-900/60 px-2 py-0.5 text-[10px] font-mono text-emerald-300 border border-emerald-700/50">
+              AAP Study (Pediatrics, Vol. 133)
+            </span>
+            <span className="font-semibold text-[#f0f4fc] text-xs">Infant Sleep Machines</span>
+          </div>
+          <p className="text-xs sm:text-sm text-[#c4d0e6] leading-relaxed">
+            In a landmark research study by the <strong>American Academy of Pediatrics (AAP)</strong>, researchers evaluated 14 commercial infant white noise machines. At maximum volume, all 14 exceeded 50 dBA at 30 cm and 100 cm, and several produced hazardous sound exceeding 85 dBA.
+          </p>
+          <div className="pt-1 space-y-2 font-medium text-emerald-300 text-xs sm:text-sm">
+            <div className="flex items-start gap-2">
+              <CheckCircle2 className="size-4 shrink-0 text-emerald-400 mt-0.5" />
+              <span><strong>The 50 dBA Crib Limit:</strong> Continuous sound levels at your baby’s crib should not exceed 50 dBA. Sustained noise above 50 dBA can increase cardiovascular stress and impact auditory cortex development.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <CheckCircle2 className="size-4 shrink-0 text-emerald-400 mt-0.5" />
+              <span><strong>The 7-Foot Rule:</strong> Place sound machines at least 7 feet (2 meters) away from the crib. Sound pressure drops by approximately 6 dB for each doubling of distance.</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <CheckCircle2 className="size-4 shrink-0 text-emerald-400 mt-0.5" />
+              <span><strong>Measure at Crib Distance:</strong> Place your device directly inside the crib where your baby’s head rests to measure the true volume reaching their ears.</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Decibel Science: dBA Weighting & Leq Average */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+          <div className="rounded-md border border-[#1b2238] bg-[#101424]/80 p-4 space-y-1.5">
+            <div className="flex items-center gap-2">
+              <Volume2 className="size-3.5 text-sky-400" />
+              <h4 className="font-semibold text-[#f0f4fc] text-xs">
+                What is dBA? (A-Weighting Explained)
+              </h4>
+            </div>
+            <p className="text-xs text-[#8e9ebc] leading-relaxed">
+              Human ears do not hear all sound frequencies equally. We are most sensitive to mid frequencies between <strong>1 kHz and 5 kHz</strong> (speech and infant crying) and less sensitive to low bass rumbles. <strong>dBA (A-weighting)</strong> applies the standardized <strong>IEC 61672-1</strong> curve to match human ear perception.
+            </p>
+          </div>
+
+          <div className="rounded-md border border-[#1b2238] bg-[#101424]/80 p-4 space-y-1.5">
+            <div className="flex items-center gap-2">
+              <Waves className="size-3.5 text-blue-400" />
+              <h4 className="font-semibold text-[#f0f4fc] text-xs">
+                Why Leq (Energy Average) Matters
+              </h4>
+            </div>
+            <p className="text-xs text-[#8e9ebc] leading-relaxed">
+              Sound fluctuates dynamically. <strong>Leq (Equivalent Continuous Sound Level)</strong> calculates true cumulative acoustic energy over your session (using the logarithmic ISO 1996 formula), giving an accurate baseline for nighttime sleep exposure rather than reacting to single-second spikes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. Motivation Story Card */}
       <div className="rounded-md border border-[#1c243c] bg-[#0e1322]/80 p-5 sm:p-6 shadow-xl backdrop-blur-sm space-y-3">
         <div className="flex items-center gap-2">
           <span className="rounded-md bg-[#151c30] px-2 py-0.5 text-[10px] font-mono text-[#a4b4d2] border border-[#222c4a]">
@@ -65,7 +136,7 @@ export const EducationalSection: React.FC = () => {
         </div>
       </div>
 
-      {/* FAQs */}
+      {/* 3. FAQs */}
       <div className="space-y-3">
         <div className="flex items-center gap-2 px-1">
           <HelpCircle className="size-4 text-[#8292b0]" />

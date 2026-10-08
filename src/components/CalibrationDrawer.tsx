@@ -1,11 +1,12 @@
 import React from 'react';
-import { SlidersHorizontal, RotateCcw } from 'lucide-react';
+import { SlidersHorizontal, RotateCcw, X } from 'lucide-react';
 
 interface CalibrationDrawerProps {
   isOpen: boolean;
   calibrationOffset: number;
   onOffsetChange: (offset: number) => void;
   onReset: () => void;
+  onClose: () => void;
 }
 
 export const CalibrationDrawer: React.FC<CalibrationDrawerProps> = ({
@@ -13,6 +14,7 @@ export const CalibrationDrawer: React.FC<CalibrationDrawerProps> = ({
   calibrationOffset,
   onOffsetChange,
   onReset,
+  onClose,
 }) => {
   if (!isOpen) return null;
 
@@ -26,9 +28,19 @@ export const CalibrationDrawer: React.FC<CalibrationDrawerProps> = ({
           <SlidersHorizontal className="size-3.5 text-[#8292b0]" />
           <span>Microphone Calibration & Offset</span>
         </div>
-        <span className="font-mono text-xs px-2 py-0.5 rounded-md bg-[#182036] border border-[#253052] text-[#f0f4fc]">
-          Offset: {deltaText}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="font-mono text-xs px-2 py-0.5 rounded-md bg-[#182036] border border-[#253052] text-[#f0f4fc]">
+            Offset: {deltaText}
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="size-6 flex items-center justify-center rounded-md text-[#8292b0] hover:text-[#f0f4fc] hover:bg-[#182036] transition-colors cursor-pointer"
+            title="Close calibration panel"
+          >
+            <X className="size-3.5" />
+          </button>
+        </div>
       </div>
 
       <p className="text-xs text-[#8a99b5] leading-relaxed">

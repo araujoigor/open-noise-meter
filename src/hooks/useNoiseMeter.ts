@@ -145,6 +145,7 @@ export function useNoiseMeter() {
     }
 
     analyserRef.current = null;
+    statusRef.current = 'idle';
     setStatus('idle');
   }, []);
 
@@ -154,6 +155,7 @@ export function useNoiseMeter() {
         cancelAnimationFrame(animFrameRef.current);
         animFrameRef.current = null;
       }
+      statusRef.current = 'paused';
       setStatus('paused');
     }
   }, []);
@@ -243,6 +245,7 @@ export function useNoiseMeter() {
       if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
         audioCtxRef.current.resume();
       }
+      statusRef.current = 'running';
       setStatus('running');
       lastTimeRef.current = performance.now();
       animFrameRef.current = requestAnimationFrame(() => processFrameRef.current());
@@ -305,10 +308,12 @@ export function useNoiseMeter() {
       sampleCountRef.current = 0;
       smoothedSplRef.current = 30;
 
+      statusRef.current = 'running';
       setStatus('running');
       animFrameRef.current = requestAnimationFrame(() => processFrameRef.current());
     } catch (err: unknown) {
       stopMeter();
+      statusRef.current = 'error';
       const message =
         err instanceof Error
           ? err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError'

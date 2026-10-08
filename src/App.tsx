@@ -6,7 +6,6 @@ import { PresetSelector } from './components/PresetSelector';
 import { MeterDisplay } from './components/MeterDisplay';
 import { CalibrationDrawer } from './components/CalibrationDrawer';
 import { EducationalSection } from './components/EducationalSection';
-import { MethodologyModal } from './components/MethodologyModal';
 import { Footer } from './components/Footer';
 import { AlertCircle } from 'lucide-react';
 
@@ -32,7 +31,6 @@ export const App: React.FC = () => {
     resetCalibration,
   } = useNoiseMeter();
 
-  const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const currentPresetConfig = PRESETS[preset];
@@ -48,7 +46,6 @@ export const App: React.FC = () => {
     <div className="min-h-screen bg-[#0a0d18] text-[#f0f4fc] flex flex-col font-sans selection:bg-[#202844] selection:text-[#f0f4fc] antialiased">
       {/* Navbar */}
       <Header
-        onOpenMethodology={() => setIsMethodologyOpen(true)}
         onToggleSettings={() => setIsSettingsOpen(!isSettingsOpen)}
         isSettingsOpen={isSettingsOpen}
       />
@@ -66,13 +63,22 @@ export const App: React.FC = () => {
           </div>
         )}
 
+        {/* Collapsible Calibration Drawer (±30 dB) - Rendered directly below Header so it's instantly visible */}
+        <CalibrationDrawer
+          isOpen={isSettingsOpen}
+          calibrationOffset={calibrationOffset}
+          onOffsetChange={setCalibrationOffset}
+          onReset={resetCalibration}
+          onClose={() => setIsSettingsOpen(false)}
+        />
+
         {/* 1. Context Purpose Mode Selector Tabs */}
         <PresetSelector
           selectedPreset={preset}
           onSelectPreset={setPreset}
         />
 
-        {/* 2. Unified Master Audio Console (The 4 metrics together, range meter below, verdict, controls, & timeline) */}
+        {/* 2. Unified Master Audio Console */}
         <MeterDisplay
           stats={stats}
           history={history}
@@ -91,26 +97,12 @@ export const App: React.FC = () => {
           onSelectResponse={setResponseTime}
         />
 
-        {/* 3. Collapsible Calibration Drawer (±30 dB) */}
-        <CalibrationDrawer
-          isOpen={isSettingsOpen}
-          calibrationOffset={calibrationOffset}
-          onOffsetChange={setCalibrationOffset}
-          onReset={resetCalibration}
-        />
-
-        {/* 4. Below-the-fold: Motivation Manifesto & Educational FAQs */}
+        {/* 3. Below-the-fold: AAP Guidelines, Science, Motivation Manifesto & Educational FAQs */}
         <EducationalSection />
       </main>
 
       {/* Footer */}
       <Footer />
-
-      {/* Methodology Guide Modal */}
-      <MethodologyModal
-        isOpen={isMethodologyOpen}
-        onClose={() => setIsMethodologyOpen(false)}
-      />
     </div>
   );
 };

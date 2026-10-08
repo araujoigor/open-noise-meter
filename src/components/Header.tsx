@@ -3,16 +3,21 @@ import { Waves, BookOpen, SlidersHorizontal, ShieldCheck } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface HeaderProps {
-  onOpenMethodology: () => void;
   onToggleSettings: () => void;
   isSettingsOpen: boolean;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  onOpenMethodology,
   onToggleSettings,
   isSettingsOpen,
 }) => {
+  const scrollToGuidelines = () => {
+    const el = document.getElementById('guidelines');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="sticky top-0 z-30 w-full border-b border-[#1b2238] bg-[#0a0d18]/90 backdrop-blur-md">
       <div className="mx-auto flex h-13 max-w-4xl items-center justify-between px-4 sm:px-6">
@@ -44,20 +49,24 @@ export const Header: React.FC<HeaderProps> = ({
             variant={isSettingsOpen ? 'secondary' : 'outline'}
             size="sm"
             onClick={onToggleSettings}
-            className="text-xs h-7.5 px-2.5 gap-1.5 border-[#1f2742] bg-[#121728]/80 hover:bg-[#1c233c] text-[#c4d0e6]"
+            className={`text-xs h-7.5 px-2.5 gap-1.5 transition-colors cursor-pointer ${
+              isSettingsOpen
+                ? 'bg-[#202946] border-[#323e62] text-[#f0f4fc]'
+                : 'border-[#1f2742] bg-[#121728]/80 hover:bg-[#1c233c] text-[#c4d0e6]'
+            }`}
             title="Calibrate microphone offset (±30 dB)"
           >
             <SlidersHorizontal className="size-3.5 text-[#8a99b5]" />
             <span className="hidden sm:inline">Calibrate</span>
           </Button>
 
-          {/* Guide Modal */}
+          {/* Guide Smooth Scroll Trigger */}
           <Button
             variant="outline"
             size="sm"
-            onClick={onOpenMethodology}
-            className="text-xs h-7.5 px-2.5 gap-1.5 border-[#1f2742] bg-[#121728]/80 hover:bg-[#1c233c] text-[#c4d0e6]"
-            title="AAP Infant Sleep Guidelines & Decibel Science"
+            onClick={scrollToGuidelines}
+            className="text-xs h-7.5 px-2.5 gap-1.5 border-[#1f2742] bg-[#121728]/80 hover:bg-[#1c233c] text-[#c4d0e6] cursor-pointer"
+            title="Scroll to AAP Infant Sleep Guidelines & Decibel Science"
           >
             <BookOpen className="size-3.5 text-[#8a99b5]" />
             <span className="hidden sm:inline">Guide</span>
