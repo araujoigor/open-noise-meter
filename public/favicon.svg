@@ -1,10 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <rect width="100" height="100" rx="24" fill="#09090b"/>
-  <rect x="2" y="2" width="96" height="96" rx="22" stroke="#27272a" stroke-width="2"/>
-  <!-- Sound level bars in Emerald gradient -->
-  <rect x="18" y="44" width="8" height="16" rx="4" fill="#10b981" />
-  <rect x="32" y="32" width="8" height="40" rx="4" fill="#10b981" />
-  <rect x="46" y="20" width="8" height="64" rx="4" fill="#34d399" />
-  <rect x="60" y="36" width="8" height="32" rx="4" fill="#10b981" />
-  <rect x="74" y="48" width="8" height="8" rx="4" fill="#10b981" />
+  <defs>
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e1322"/>
+      <stop offset="100%" stop-color="#070a14"/>
+    </linearGradient>
+    <linearGradient id="favCenter" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="favMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background squircle -->
+  <rect width="100" height="100" rx="23" fill="url(#favBg)"/>
+  <rect x="1" y="1" width="98" height="98" rx="22" stroke="#1f2845" stroke-width="2"/>
+
+  <!-- Sound level bars in Nocturnal Indigo / Electric Sky -->
+  <rect x="20" y="43" width="8" height="14" rx="4" fill="#6366f1"/>
+  <rect x="34" y="30" width="8" height="40" rx="4" fill="url(#favMid)"/>
+  <rect x="48" y="17" width="8" height="66" rx="4" fill="url(#favCenter)"/>
+  <rect x="62" y="34" width="8" height="32" rx="4" fill="url(#favMid)"/>
+  <circle cx="80" cy="50" r="4" fill="#38bdf8"/>
 </svg>

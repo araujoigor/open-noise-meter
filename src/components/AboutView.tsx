@@ -54,7 +54,7 @@ export const AboutView: React.FC = () => {
               <span>Open Source (MIT License)</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <ShieldCheck className="size-3.5 text-emerald-400" />
+              <ShieldCheck className="size-3.5 text-indigo-400" />
               <span>0 Cookies • 0 Telemetry</span>
             </div>
             <div className="flex items-center gap-1.5">
