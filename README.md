@@ -1,8 +1,8 @@
-# 🔊 OpenNoiseMeter
+# OpenNoiseMeter
 
 > **Free, open-source, and 100% ad-free sound level decibel meter (dBA) with baby sleep / white noise machine safety checks.**
 
-🌐 **Live App:** [open-noise-meter.araujoigor.com](https://open-noise-meter.araujoigor.com)
+**Live App:** [open-noise-meter.araujoigor.com](https://open-noise-meter.araujoigor.com)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
 [![Zero Ads](https://img.shields.io/badge/Ads-Zero-emerald.svg)]()
@@ -12,9 +12,9 @@
 
 ---
 
-## 🎯 The Motivation: Why I Built This
+## Motivation
 
-I created **OpenNoiseMeter** out of a very personal need: I wanted to check if my daughter's white noise machine was too loud and protect her developing hearing. 
+I created **OpenNoiseMeter** out of a very personal need: I wanted to check if my daughter's white noise machine was too loud and protect her developing hearing.
 
 When searching the iOS App Store and Google Play, almost every single decibel meter was unbearable:
 * **30-second unskippable video ads** before you can even measure sound.
@@ -27,39 +27,39 @@ I believe basic utility tools belong on the open web. Progressive Web Apps (PWAs
 
 ---
 
-## ✨ Features
+## Features
 
-* 🍼 **Nursery & Infant Sleep Safety Mode (AAP Guidelines)**:
+* **Nursery & Infant Sleep Safety Mode (AAP Guidelines)**:
   * Targets the **American Academy of Pediatrics (AAP)** 50 dBA crib limit.
   * Real-time qualitative assessment: *Safe for Sleep*, *Borderline*, or *Too Loud!*.
   * Actionable placement guidance (*7-foot rule*).
-* 🛡️ **Everyday Hearing Protection (WHO & NIOSH)**:
+* **Hearing Safety Mode (WHO & NIOSH)**:
   * 85 dBA recommended exposure limit (REL).
   * Warns when ambient noise can cause permanent sensorineural hearing damage.
-* 🌙 **Sleep & Focus / Quiet Space**:
+* **Sleep & Focus Mode**:
   * Assesses background tranquility for deep work and restorative sleep.
-* 📊 **Pro / Unconstrained Meter**:
+* **Pro / Raw Meter**:
   * **IEC 61672-1 Frequency Weightings**: **dBA** (human ear simulation), **dBC** (flat bass/industrial), **dBZ** (unweighted linear SPL).
   * **Ballistics Time Weightings**: **Slow (1000ms)** for steady ambient sleep noise; **Fast (125ms)** for transient spikes.
-* 🧭 **Bespoke Hero Visual Meter**:
-  * High-DPI Canvas arc meter with dynamic status glow and real-time qualitative verdict.
+* **Unified Acoustic Cockpit**:
+  * Above-the-fold 4-metric readout (Live, Leq Average, Min, Peak Max).
   * Dedicated **Acoustic Safety Zone Bar** showing exact positioning relative to the AAP 50 dBA crib guideline.
-* 📈 **60-Second Scrolling History Graph**:
+* **60-Second Rolling Waveform Timeline**:
   * Real-time rolling timeline with target threshold lines (AAP 50 dBA crib limit, NIOSH 85 dBA hazard limit).
-* 📱 **First-Class PWA (Progressive Web App)**:
+* **Progressive Web App (PWA)**:
   * Installable directly to your home screen on iOS and Android.
   * Launches in fullscreen with no browser address bar.
   * Works 100% offline via Service Worker precaching.
-* 🔒 **100% Client-Side Privacy**:
+* **100% Client-Side Privacy**:
   * Audio samples are processed in local volatile RAM via the Web Audio API and immediately discarded.
   * Zero audio recorded, zero audio streamed, zero tracking cookies.
 
 ---
 
-## 🔬 Acoustic Science & AAP Guidelines
+## Acoustic Science & AAP Guidelines
 
 ### The 50 dBA / 7-Foot Rule for White Noise Machines
-A study published in *Pediatrics* (American Academy of Pediatrics) found that commercial infant sleep machines placed close to cribs routinely produce sound levels hazardous to newborn hearing. 
+A study published in *Pediatrics* (American Academy of Pediatrics) found that commercial infant sleep machines placed close to cribs routinely produce sound levels hazardous to newborn hearing.
 
 The AAP recommends:
 1. **Never exceed 50 dBA** at the infant's sleep location.
@@ -68,16 +68,16 @@ The AAP recommends:
 
 ---
 
-## 🎛️ Microphone Calibration
+## Microphone Calibration
 
-Consumer smartphone and laptop microphones are built for vocal clarity and telephony, not factory-calibrated acoustics. 
+Consumer smartphone and laptop microphones are built for vocal clarity and telephony, not factory-calibrated acoustics.
 
 * **Out-of-the-box Baseline:** OpenNoiseMeter is pre-calibrated (+100 dBFS offset) so a typical quiet room reads ~35–40 dBA and normal speaking voice reads ~60–65 dBA.
-* **Fine-Tuning:** If you have an **Apple Watch (Noise app)** or a physical Type 2 sound level meter, open the **Calibration Drawer** and adjust the slider (±30 dB) to match your reference.
+* **Fine-Tuning:** If you have an **Apple Watch (Noise app)** or a physical Type 2 sound level meter, go to **Settings** and adjust the slider (±30 dB) to match your reference.
 
 ---
 
-## 🚀 Quick Start (Local Development)
+## Quick Start (Local Development)
 
 This project uses [Bun](https://bun.sh/) (or Node/npm) with Vite, React, TypeScript, and Tailwind CSS.
 
@@ -101,7 +101,7 @@ bun run build
 
 ---
 
-## 🌐 Deployment & Subdomain Setup
+## Deployment & Subdomain Setup
 
 OpenNoiseMeter is built to run on its own domain or subdomain (e.g., `open-noise-meter.araujoigor.com`):
 
@@ -117,12 +117,12 @@ OpenNoiseMeter is built to run on its own domain or subdomain (e.g., `open-noise
 
 ---
 
-## 🤖 AI Agent & Human Contribution
+## Contributing
 
 See [`AGENTS.md`](./AGENTS.md) for architecture guidelines, DSP math constraints, and rules for automated coding assistants proposing PRs. See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for human contributor workflows.
 
 ---
 
-## 📄 License
+## License
 
 MIT © [Igor Araujo](https://araujoigor.com)

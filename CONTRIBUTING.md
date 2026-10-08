@@ -4,7 +4,7 @@ Thank you for your interest in contributing to **OpenNoiseMeter**! We welcome co
 
 ---
 
-## 🛠️ Development Setup
+## Development Setup
 
 1. Fork and clone the repository:
    ```bash
@@ -34,7 +34,7 @@ Thank you for your interest in contributing to **OpenNoiseMeter**! We welcome co
 
 ---
 
-## 📋 Guidelines for Pull Requests
+## Guidelines for Pull Requests
 
 * **Privacy is paramount:** Never add telemetry, cookies, or remote audio transmission.
 * **Minimal dependencies:** Keep the app lightweight and fast to load on mobile connections.
@@ -43,6 +43,6 @@ Thank you for your interest in contributing to **OpenNoiseMeter**! We welcome co
 
 ---
 
-## 💬 Questions & Issues
+## Questions & Issues
 
 Feel free to open an issue on GitHub for bug reports, questions, or feature requests!
