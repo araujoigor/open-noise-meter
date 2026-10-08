@@ -106,7 +106,7 @@ export const AboutView: React.FC = () => {
         </div>
         <div className="flex items-center gap-3">
           <a
-            href="https://github.com/araujoigor/noise-meter"
+            href="https://github.com/araujoigor/open-noise-meter"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-[#8292b0] hover:text-[#f0f4fc] transition-colors"

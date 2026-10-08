@@ -8,8 +8,8 @@ Thank you for your interest in contributing to **OpenNoiseMeter**! We welcome co
 
 1. Fork and clone the repository:
    ```bash
-   git clone https://github.com/araujoigor/noise-meter.git
-   cd noise-meter
+   git clone https://github.com/araujoigor/open-noise-meter.git
+   cd open-noise-meter
    ```
 
 2. Install dependencies (we recommend [Bun](https://bun.sh/), but `npm` or `pnpm` also work):

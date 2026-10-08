@@ -74,7 +74,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Actions / GitHub */}
         <div className="flex items-center gap-2">
           <a
-            href="https://github.com/araujoigor/noise-meter"
+            href="https://github.com/araujoigor/open-noise-meter"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex"

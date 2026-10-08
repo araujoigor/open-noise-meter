@@ -81,8 +81,8 @@ This project uses [Bun](https://bun.sh/) (or Node/npm) with Vite, React, TypeScr
 
 ```bash
 # Clone the repository
-git clone https://github.com/araujoigor/noise-meter.git
-cd noise-meter
+git clone https://github.com/araujoigor/open-noise-meter.git
+cd open-noise-meter
 
 # Install dependencies
 bun install
