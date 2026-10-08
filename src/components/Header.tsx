@@ -1,78 +1,78 @@
 import React from 'react';
-import { Waves, BookOpen, SlidersHorizontal, ShieldCheck } from 'lucide-react';
+import type { AppTab } from '../types';
+import { Waves, Activity, SlidersHorizontal, BookOpen, HelpCircle } from 'lucide-react';
 import { Button } from './ui/button';
 
 interface HeaderProps {
-  onToggleSettings: () => void;
-  isSettingsOpen: boolean;
+  activeTab: AppTab;
+  onTabChange: (tab: AppTab) => void;
+  isMeasuring: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  onToggleSettings,
-  isSettingsOpen,
-}) => {
-  const scrollToGuidelines = () => {
-    const el = document.getElementById('guidelines');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+const DESKTOP_TABS: Array<{ id: AppTab; label: string; icon: React.ComponentType<{ className?: string }> }> = [
+  { id: 'meter', label: 'Meter', icon: Activity },
+  { id: 'settings', label: 'Settings', icon: SlidersHorizontal },
+  { id: 'guidelines', label: 'Guidelines', icon: BookOpen },
+  { id: 'about', label: 'About', icon: HelpCircle },
+];
 
+export const Header: React.FC<HeaderProps> = ({
+  activeTab,
+  onTabChange,
+  isMeasuring,
+}) => {
   return (
     <header className="sticky top-0 z-30 w-full border-b border-[#1b2238] bg-[#0a0d18]/90 backdrop-blur-md">
       <div className="mx-auto flex h-13 max-w-4xl items-center justify-between px-4 sm:px-6">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="flex size-8 items-center justify-center rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+          <button
+            type="button"
+            onClick={() => onTabChange('meter')}
+            className="flex size-8 items-center justify-center rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:scale-105 transition-transform cursor-pointer"
+            title="OpenNoiseMeter"
+          >
             <Waves className="size-4.5 stroke-[2.2]" />
-          </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold tracking-tight text-[#f0f4fc]">
-                OpenNoiseMeter
-              </span>
-              <span className="hidden sm:inline-flex items-center gap-1 rounded-md bg-[#13192a] px-2 py-0.5 text-[10px] font-mono text-[#8a99b5] border border-[#222c48]">
-                <ShieldCheck className="size-3 text-emerald-400" />
-                Zero Tracking • No Ads
-              </span>
-            </div>
+          </button>
+          <div className="flex flex-col text-left">
+            <span className="text-sm font-semibold tracking-tight text-[#f0f4fc]">
+              OpenNoiseMeter
+            </span>
             <span className="text-[10px] text-[#7182a3] font-mono hidden xs:block">
-              Client-Side Web Audio Decibel Meter
+              100% Client-Side Decibel Meter
             </span>
           </div>
         </div>
 
-        {/* Actions */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* Settings / Calibration Toggle */}
-          <Button
-            variant={isSettingsOpen ? 'secondary' : 'outline'}
-            size="sm"
-            onClick={onToggleSettings}
-            className={`text-xs h-7.5 px-2.5 gap-1.5 transition-colors cursor-pointer ${
-              isSettingsOpen
-                ? 'bg-[#202946] border-[#323e62] text-[#f0f4fc]'
-                : 'border-[#1f2742] bg-[#121728]/80 hover:bg-[#1c233c] text-[#c4d0e6]'
-            }`}
-            title="Calibrate microphone offset (±30 dB)"
-          >
-            <SlidersHorizontal className="size-3.5 text-[#8a99b5]" />
-            <span className="hidden sm:inline">Calibrate</span>
-          </Button>
+        {/* Desktop Navigation Tabs (Hidden on mobile where bottom nav is active) */}
+        <nav aria-label="Desktop Navigation" className="hidden md:flex items-center gap-1 rounded-md bg-[#101424] p-1 border border-[#1d253e]">
+          {DESKTOP_TABS.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
 
-          {/* Guide Smooth Scroll Trigger */}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={scrollToGuidelines}
-            className="text-xs h-7.5 px-2.5 gap-1.5 border-[#1f2742] bg-[#121728]/80 hover:bg-[#1c233c] text-[#c4d0e6] cursor-pointer"
-            title="Scroll to AAP Infant Sleep Guidelines & Decibel Science"
-          >
-            <BookOpen className="size-3.5 text-[#8a99b5]" />
-            <span className="hidden sm:inline">Guide</span>
-          </Button>
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => onTabChange(tab.id)}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded text-xs font-medium transition-all cursor-pointer ${
+                  isActive
+                    ? 'bg-[#1e2640] text-[#f0f4fc] font-semibold shadow-sm border border-[#2d395e]'
+                    : 'text-[#8292b0] hover:text-[#f0f4fc] hover:bg-[#161c30]'
+                }`}
+              >
+                <Icon className={`size-3.5 ${isActive ? 'text-emerald-400' : 'text-[#8292b0]'}`} />
+                <span>{tab.label}</span>
+                {tab.id === 'meter' && isMeasuring && (
+                  <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
+                )}
+              </button>
+            );
+          })}
+        </nav>
 
-          {/* GitHub link */}
+        {/* Actions / GitHub */}
+        <div className="flex items-center gap-2">
           <a
             href="https://github.com/araujoigor/noise-meter"
             target="_blank"

@@ -1,5 +1,7 @@
 export type PresetType = 'nursery' | 'hearing' | 'sleep' | 'raw';
 
+export type AppTab = 'meter' | 'settings' | 'guidelines' | 'about';
+
 export type WeightingType = 'A' | 'C' | 'Z';
 
 export type ResponseTime = 'fast' | 'slow';
